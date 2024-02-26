@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+.title {
+  font-weight: 500;
+}
+
+.platform {
+  font-weight: 200;
+}
+
+.price {
+  font-family: 'Poppins', sans-serif;
+  color: #90E0EF;
+  font-weight: 700;
+}
+
+.platformImage {
+  width: 150px;
+  align-self: flex-end;
+  position: relative;
+  top: 0;
+  /* z-index: 2; */
+}
