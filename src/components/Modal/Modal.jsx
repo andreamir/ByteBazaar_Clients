@@ -19,15 +19,15 @@ function Modal({ title, handleDismiss, children }) {
             aria-modal='true'
             aria-label={title}
           >
-            <button
-              className={styles.closeBtn}
-              onClick={handleDismiss}
-            >
-              <Close />
-              <VisuallyHidden>
-                Dismiss modal
-              </VisuallyHidden>
-            </button>
+            {/* <button */}
+              {/* className={styles.closeBtn} */}
+              {/* onClick={handleDismiss} */}
+            {/* > */}
+              {/* <Close /> */}
+              {/* <VisuallyHidden> */}
+                {/* Dismiss modal */}
+              {/* </VisuallyHidden> */}
+            {/* </button> */}
             {children}
           </div>
         </div>

@@ -21,10 +21,10 @@
 
 .closeBtn {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 45px;
+  right: -10px;
   padding: 16px;
-  color: white;
+  color: black;
   transform: translateY(-100%);
   cursor: pointer;
   background: transparent;

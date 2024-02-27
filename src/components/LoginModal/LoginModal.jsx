@@ -5,7 +5,7 @@ function LoginModal({ handleDismiss }) {
 
   return (
     <Modal title='Login Form' handleDismiss={handleDismiss}>
-      <LoginForm />
+      <LoginForm handleDismiss={handleDismiss} />
     </Modal>
   );
 }
