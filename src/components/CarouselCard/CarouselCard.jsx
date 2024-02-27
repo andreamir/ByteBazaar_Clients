@@ -9,6 +9,7 @@ function ProductCard(props){
   const platformName = props.data.platform_id.name;
   const { _id, price } = props.data
   const refactoredTitle = []
+  
   if (title.length > 20) {
     const splitTitle = title.split(' ')
     let titleParts = ''
@@ -24,6 +25,8 @@ function ProductCard(props){
     })
     refactoredTitle.push(titleParts)
   } 
+
+  // WIP
   const platformImages = {
     XBoxSeries: '',
     PC: '',
@@ -39,16 +42,14 @@ function ProductCard(props){
         <StyledCarouselCard $bgimage={image}>
               <img className='platformImage' src={platformImages[platformName]} alt="" />
           <StyledCardOverlay onClick={ () => { navigate(`/product/${_id}`) }}>
-            <div>
-              {refactoredTitle.length ?
-              refactoredTitle.map(phrase => 
-                phrase &&
-                <p key={phrase} className='title'>{phrase}</p>)
-               :
-              (<p className='title'>{title}</p>)
-              }
-              <p className='platform'>{platformName}</p>
-            </div>
+            {refactoredTitle.length ?
+            refactoredTitle.map(phrase => 
+              phrase &&
+              <p key={phrase} className='title'>{phrase}</p>)
+              :
+            (<p className='title'>{title}</p>)
+            }
+            <p className='platform'>{platformName}</p>
             <p className='price'>{`${price}€`}</p>
           </StyledCardOverlay>
         </StyledCarouselCard>
