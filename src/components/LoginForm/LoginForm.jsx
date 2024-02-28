@@ -12,9 +12,9 @@ import Footer from './styled/Footer';
 import AuthButtonContainer from './styled/AuthButtonContainer';
 import Button from './styled/Button';
 
-function LoginForm({ handleDismiss }) {
+function LoginForm({ title, handleDismiss }) {
   return (
-    <AuthModalContent>
+    <AuthModalContent title={title}>
       <AuthModalHead handleDismiss={handleDismiss}>
         Iniciar Sesión
       </AuthModalHead>

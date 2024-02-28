@@ -4,8 +4,8 @@ import LoginForm from '../LoginForm/LoginForm';
 function LoginModal({ handleDismiss }) {
 
   return (
-    <Modal title='Login Form' handleDismiss={handleDismiss}>
-      <LoginForm handleDismiss={handleDismiss} />
+    <Modal handleDismiss={handleDismiss}>
+      <LoginForm title='Login Form' handleDismiss={handleDismiss} />
     </Modal>
   );
 }
