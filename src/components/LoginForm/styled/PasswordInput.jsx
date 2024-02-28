@@ -22,18 +22,18 @@ const VisibilityIcon = styled.i`
   }
 `;
 
-function StyledPasswordInput() {
+function StyledPasswordInput({ title }) {
   const [passwordVisibility, togglePasswordVisibility] = useToggle(false);
 
   return (
     <PasswordInput>
       <FormGroup>
-        <TextFieldTitle>Contraseña</TextFieldTitle>
+        <TextFieldTitle>{title}</TextFieldTitle>
         <TextField>
           <Input
             type={passwordVisibility ? 'text' : 'password'}
             name="password"
-            placeholder="Contraseña"
+            placeholder={title}
             tabIndex=""
             autoComplete="off"
           />
