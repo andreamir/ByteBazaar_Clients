@@ -1,79 +1,35 @@
 import React from 'react';
 import * as Form from '@radix-ui/react-form';
 import styles from './LoginForm.module.css';
-import AuthModalContent from './styled/AuthModalContent';
-import AuthModalHead from './styled/AuthModalHead';
-import AuthModalBody from './styled/AuthModalBody';
+import FormContainer from './styled/FormContainer';
+import FormHead from './styled/FormHead';
+import FormBody from './styled/FormBody';
 import ToRegister from './styled/ToRegister';
 import EmailInput from './styled/EmailInput';
 import PasswordInput from './styled/PasswordInput';
 import ToRecovery from './styled/ToRecovery';
 import Footer from './styled/Footer';
-import AuthButtonContainer from './styled/AuthButtonContainer';
+import ButtonContainer from './styled/ButtonContainer';
 import Button from './styled/Button';
 
 function LoginForm({ title, handleDismiss }) {
   return (
-    <AuthModalContent title={title}>
-      <AuthModalHead handleDismiss={handleDismiss}>
-        Iniciar Sesión
-      </AuthModalHead>
+    <FormContainer title={title}>
+      <FormHead handleDismiss={handleDismiss}>Iniciar Sesión</FormHead>
       <Form.Root>
-        <AuthModalBody>
+        <FormBody>
           <ToRegister />
           <EmailInput />
           <PasswordInput />
           <ToRecovery />
-        </AuthModalBody>
+        </FormBody>
         <Footer>
-          <AuthButtonContainer>
+          <ButtonContainer>
             <Button>Iniciar Sesión</Button>
-          </AuthButtonContainer>
+          </ButtonContainer>
         </Footer>
-
-          {/* <Form.Field name="email">
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'baseline',
-                justifyContent: 'space-between',
-              }}
-            >
-              <Form.Label>Email</Form.Label>
-              <Form.Message match="valueMissing">
-                Dirección de email
-              </Form.Message>
-              <Form.Message match="typeMismatch">
-                Por favor ingrese un email válido
-              </Form.Message>
-            </div>
-            <Form.Control asChild>
-              <input type="email" required />
-            </Form.Control>
-          </Form.Field> */}
-
-          {/* <Form.Field name="password">
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'baseline',
-                justifyContent: 'space-between',
-              }}
-            >
-              <Form.Label>Contraseña</Form.Label>
-              <Form.Message match="valueMissing">Contraseña</Form.Message>
-            </div>
-            <Form.Control asChild>
-              <input type="password" required />
-            </Form.Control>
-          </Form.Field> */}
-
-        {/* <Form.Submit asChild> */}
-          {/* <button style={{ marginTop: 10 }}>Login</button> */}
-        {/* </Form.Submit> */}
-        
       </Form.Root>
-    </AuthModalContent>
+    </FormContainer>
   );
 }
 
@@ -82,4 +38,17 @@ export default LoginForm;
 /**
  * Unstyled Radix Components in use... (for reference)
  * https://www.radix-ui.com/primitives/docs/components/form#form
+ */
+
+/**
+ * TODO: Replace returning tag with Radix unstyled components
+ * EmailInput / PasswordInput -> Form.Field
+ * TextFieldTitle -> Form.Label
+ * Input -> Form.Control with nested input... with asChild attr?
+ * Form.Message ... implement usage for error and other messages
+ * <Form.Message match="valueMissing">Dirección de email</Form.Message>
+ * <Form.Message match="typeMismatch">Por favor ingrese un email válido</Form.Message>
+ * <Form.Submit asChild>
+ *   <button style={{ marginTop: 10 }}>Login</button>
+ * </Form.Submit>
  */

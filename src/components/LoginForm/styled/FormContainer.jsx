@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
 
-const FormContent = styled.div.attrs((props) => ({
+const FormContainer = styled.div.attrs((props) => ({
   "role": 'dialog',
   "aria-modal": 'true',
   "title": props.title || 'Form Content',
@@ -34,12 +34,12 @@ const FormContent = styled.div.attrs((props) => ({
   }
 `;
 
-function StyledFormContent({ children, title }) {
+function StyledFormContainer({ children, title }) {
   return (
-    <FormContent title={title}>
+    <FormContainer title={title}>
       {children}
-    </FormContent>
+    </FormContainer>
   )
 }
 
-export default StyledFormContent;
+export default StyledFormContainer;
