@@ -9,6 +9,7 @@ const ThumbnailWrapper = styled.div`
   padding: 20px;
   margin: 1px;
   cursor: pointer;
+  width: 236px;
 `
 
 export default ThumbnailWrapper

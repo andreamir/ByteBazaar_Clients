@@ -18,6 +18,7 @@ const StyledGameCard = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
+  // flex: 1;
   transition-duration: .8s;
   transition-property: all;
   transition-timing-function: cubic-bezier(.78,.13,.15,.86);
