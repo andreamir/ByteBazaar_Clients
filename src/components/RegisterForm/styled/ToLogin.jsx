@@ -1,6 +1,13 @@
+/**
+ * TODO: Create "To..." low-level component
+ * This component is almost identical to "ToRegister",
+ * and even to "ToRecovery" becuase we could use conditional
+ * rendering for the first span of text.
+ */
+
 import { styled } from 'styled-components';
 
-const ToRegister = styled.div`
+const ToLogin = styled.div`
   display: flex;
   margin-bottom: 24px;
 
@@ -34,20 +41,20 @@ const A = styled.a`
   }
 `;
 
-function StyledToRegister({ handleDismiss, toggleRegisterModal }) {
+function StyledToLogin({ handleDismiss, toggleShowLoginModal }) {
   return (
-    <ToRegister>
-      <P>¿No tienes cuenta?</P>
+    <ToLogin>
+      <P>¿Ya tienes cuenta?</P>
       <A
         onClick={() => {
           handleDismiss();
-          toggleRegisterModal();
+          toggleShowLoginModal();
         }}
       >
-        ¡Regístrate!
+        Inicia sesión aquí
       </A>
-    </ToRegister>
+    </ToLogin>
   );
 }
 
-export default StyledToRegister;
+export default StyledToLogin;
