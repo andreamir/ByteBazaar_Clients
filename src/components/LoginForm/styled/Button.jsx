@@ -75,14 +75,14 @@ const Button = styled.button`
     line-height: 20px;
     padding: 11px 24px;
 
-    &:not:hover {
-      transform: scale(1.05);
-      transform-origin: center center 0;
-    }
-
     /* .cx-btn-primary */
     &:hover {
       background-color: #b50802;
+    }
+
+    &:not(.no-scale):hover {
+      transform: scale(1.05);
+      transform-origin: center center 0;
     }
   }
 `;

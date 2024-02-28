@@ -6,16 +6,16 @@ import { styled } from 'styled-components';
  * mainly for debugging.
  */
 
-const AuthModalBody = styled.div`
+const FormBody = styled.div`
   /* No styles applied */
 `;
 
-function StyledAuthModalBody({ children }) {
+function StyledFormBody({ children }) {
   return (
-    <>
+    <FormBody>
     {children}
-    </>
+    </FormBody>
   );
 };
 
-export default StyledAuthModalBody;
+export default StyledFormBody;

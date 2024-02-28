@@ -1,26 +1,47 @@
+import useToggle from '../../../hooks/use-toggle.hook';
 import { styled } from 'styled-components';
 import FormGroup from './FormGroup';
 import TextFieldTitle from './TextFieldTitle';
 import TextField from './TextField';
 import Input from './Input';
+import { Eye } from 'react-feather';
+import { EyeOff } from 'react-feather';
 
 const PasswordInput = styled.div`
   margin-bottom: 16px;
 `;
 
+const VisibilityIcon = styled.i`
+  color: #0d0d0d;
+  font-size: 18px;
+  justify-content: right;
+  padding-right: 14px;
+
+  @media (min-width: 768px) {
+    font-size: 20px;
+  }
+`;
+
 function StyledPasswordInput() {
+  const [passwordVisibility, togglePasswordVisibility] = useToggle(false);
+
   return (
     <PasswordInput>
       <FormGroup>
         <TextFieldTitle>Contraseña</TextFieldTitle>
         <TextField>
           <Input
-            type="password"
+            type={passwordVisibility ? 'text' : 'password'}
             name="password"
             placeholder="Contraseña"
             tabIndex=""
             autoComplete="off"
           />
+          <VisibilityIcon>
+            <div type="button" onClick={() => togglePasswordVisibility()}>
+              {passwordVisibility ? <Eye /> : <EyeOff />}
+            </div>
+          </VisibilityIcon>
         </TextField>
       </FormGroup>
     </PasswordInput>
