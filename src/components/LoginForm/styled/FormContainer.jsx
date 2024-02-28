@@ -1,6 +1,12 @@
 import { styled } from 'styled-components';
 
-const StyledAuthModalContent = styled.div`
+const FormContainer = styled.div.attrs((props) => ({
+  "role": 'dialog',
+  "aria-modal": 'true',
+  "title": props.title || 'Form Content',
+}))`
+  /* position relative is needed to work within <Modal /> component */
+  position: relative;
   background-color: #fff;
   min-height: 100%;
   padding: 24px;
@@ -28,12 +34,12 @@ const StyledAuthModalContent = styled.div`
   }
 `;
 
-function AuthModalContent({ children }) {
+function StyledFormContainer({ children, title }) {
   return (
-    <StyledAuthModalContent>
+    <FormContainer title={title}>
       {children}
-    </StyledAuthModalContent>
+    </FormContainer>
   )
 }
 
-export default AuthModalContent;
+export default StyledFormContainer;
