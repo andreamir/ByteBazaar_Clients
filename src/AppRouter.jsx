@@ -4,6 +4,7 @@ import ProductDetail from './pages/ProductDetail/ProductDetail.jsx'
 import CarouselDemo from './pages/CarouselDemo/CarouselDemo.jsx'
 import TestPageRenzo from './pages/TestPageRenzo/TestPageRenzo'
 import GameCardDemo from './pages/GameCardDemo/GameCardDemo.jsx'
+import TestPageMarc from './pages/TestPageMarc/TestPageMarc.jsx'
 
 function AppRouter() {
   return useRoutes([
@@ -27,7 +28,11 @@ function AppRouter() {
     {
       element: <GameCardDemo />,
       path: '/gameCardDemo'
-    }
+    },
+    {
+      element: <TestPageMarc />,
+      path: '/testpagemarc',
+    },
   ]);
 }
 
