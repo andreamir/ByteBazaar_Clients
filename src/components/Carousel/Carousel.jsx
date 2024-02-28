@@ -19,12 +19,12 @@ function Carousel(props) {
   const scrollbarRef = useRef()  
 
   function handleScroll() {
-    setScrollWidth(scrollbarRef.current.scrollLeft)
+    setScrollWidth(Math.ceil(scrollbarRef.current.scrollLeft))
   }
 
   useEffect(() => {
     scrollbarRef.current.addEventListener('scroll', handleScroll)
-    const maxScroll = scrollbarRef.current.scrollWidth-scrollbarRef.current.clientWidth
+    const maxScroll = Math.floor(scrollbarRef.current.scrollWidth-scrollbarRef.current.clientWidth)
     setMaxScrollWidth(maxScroll)
   }, [])
 
@@ -42,11 +42,11 @@ function Carousel(props) {
 
   return(
     <StyledCarousel>
-      <StyledTrackButton onClick={backClickHandler} $hide={scrollWidth === 0} $left={true}>◀️</StyledTrackButton>
+      <StyledTrackButton onClick={backClickHandler} $hide={scrollWidth === 0} $left={true}>◀️{scrollWidth}</StyledTrackButton>
       <StyledScrollbar  ref={scrollbarRef} $gap={`${gap}px`}>
         {data.map((product, index) => <CarouselCard key={product._id} data={data[index]}></CarouselCard>)}
       </StyledScrollbar>
-      <StyledTrackButton onClick={forwardClickHandler} $hide={scrollWidth >= maxScrollWidth} >▶</StyledTrackButton>
+      <StyledTrackButton onClick={forwardClickHandler} $hide={scrollWidth >= maxScrollWidth} >▶{maxScrollWidth}</StyledTrackButton>
     </StyledCarousel>
   )
 }
