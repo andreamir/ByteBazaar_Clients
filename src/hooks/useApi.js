@@ -13,7 +13,6 @@ function useApi() {
     setIsLoading(true)
 
     const response = await fetch(endpoint+route, {
-      // mode: 'no-cors',
       method,
       headers: { 
         'Content-Type': 'application/json',
