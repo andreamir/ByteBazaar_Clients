@@ -3,6 +3,7 @@ import App from './App'
 import ProductDetail from './pages/ProductDetail/ProductDetail.jsx'
 import CarouselDemo from './pages/CarouselDemo/CarouselDemo.jsx'
 import TestPageRenzo from './pages/TestPageRenzo/TestPageRenzo'
+import GameCardDemo from './pages/GameCardDemo/GameCardDemo.jsx'
 
 function AppRouter() {
   return useRoutes([
@@ -21,6 +22,11 @@ function AppRouter() {
     {
       element: <CarouselDemo />,
       path: '/carouselDemo'
+    },
+    ,
+    {
+      element: <GameCardDemo />,
+      path: '/gameCardDemo'
     }
   ]);
 }
