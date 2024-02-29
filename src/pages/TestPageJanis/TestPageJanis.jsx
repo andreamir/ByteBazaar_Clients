@@ -5,7 +5,7 @@ import data from '../../data/twelveProducts.js'
 
 function TestPageJanis() {
   const { id } = useParams()
-  const product = data.products.find(product => product._id === id); 
+  const product = data.products.find(product => product._id === id);
 
   return (
     <>
