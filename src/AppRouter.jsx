@@ -5,6 +5,7 @@ import CarouselDemo from './pages/CarouselDemo/CarouselDemo.jsx'
 import TestPageRenzo from './pages/TestPageRenzo/TestPageRenzo'
 import GameCardDemo from './pages/GameCardDemo/GameCardDemo.jsx'
 import TestPageJanis from './pages/TestPageJanis/TestPageJanis.jsx'
+import TestPageMarc from './pages/TestPageMarc/TestPageMarc.jsx'
 
 function AppRouter() {
   return useRoutes([
@@ -31,7 +32,11 @@ function AppRouter() {
     {
       element: <TestPageJanis />,
       path: '/testpagejanis/:id'
-    }
+    },
+    {
+      element: <TestPageMarc />,
+      path: '/testpagemarc',
+    },
   ]);
 }
 
