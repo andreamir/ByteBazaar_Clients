@@ -12,7 +12,12 @@ import Footer from './styled/Footer';
 import ButtonContainer from './styled/ButtonContainer';
 import Button from './styled/Button';
 
-function LoginForm({ title, handleDismiss, toggleRegisterModal }) {
+function LoginForm({
+  title,
+  handleDismiss,
+  toggleRegisterModal,
+  toggleRecoveryModal,
+}) {
   return (
     <FormContainer title={title}>
       <FormHead handleDismiss={handleDismiss}>Iniciar Sesión</FormHead>
@@ -24,7 +29,10 @@ function LoginForm({ title, handleDismiss, toggleRegisterModal }) {
           />
           <EmailInput />
           <PasswordInput title="Contraseña" />
-          <ToRecovery />
+          <ToRecovery
+            handleDismiss={handleDismiss}
+            toggleRecoveryModal={toggleRecoveryModal}
+          />
         </FormBody>
         <Footer>
           <ButtonContainer>
