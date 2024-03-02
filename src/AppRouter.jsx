@@ -24,7 +24,6 @@ function AppRouter() {
       element: <CarouselDemo />,
       path: '/carouselDemo'
     },
-    ,
     {
       element: <GameCardDemo />,
       path: '/gameCardDemo'
