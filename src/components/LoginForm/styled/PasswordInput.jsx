@@ -22,7 +22,7 @@ const VisibilityIcon = styled.i`
   }
 `;
 
-function StyledPasswordInput({ title }) {
+function StyledPasswordInput({ title, value, setPassword }) {
   const [passwordVisibility, togglePasswordVisibility] = useToggle(false);
 
   return (
@@ -36,6 +36,8 @@ function StyledPasswordInput({ title }) {
             placeholder={title}
             tabIndex=""
             autoComplete="off"
+            value={value}
+            onChange={(e) => setPassword(e.target.value)}
           />
           <VisibilityIcon>
             <div type="button" onClick={() => togglePasswordVisibility()}>

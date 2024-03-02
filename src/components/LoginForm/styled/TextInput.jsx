@@ -23,7 +23,7 @@ function StyledTextInput({ title, type, name, placeholder, autocomplete="off", t
             name={name}
             placeholder={placeholder}
             autoComplete={autocomplete}
-            tabindex={tabindex}
+            tabIndex={tabindex}
           />
         </TextField>
       </FormGroup>

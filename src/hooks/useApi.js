@@ -24,6 +24,7 @@ function useApi() {
       const responseAsJson = await response.json()
       if (responseAsJson.token) {
         localStorage.token = responseAsJson.token
+        localStorage.user = responseAsJson.user
       }
       setData(responseAsJson)
       setIsLoading(false)
