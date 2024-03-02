@@ -8,6 +8,7 @@ import StyledTitle from './Styled/Title.js'
 import StyledPriceBar from './Styled/PriceBar.js'
 import StyledAddToCart from './Styled/AddToCart.js'
 import StyledBasket from './Styled/Basket.js'
+import { useShoppingListContext } from '../../contexts/ShoppingListContext.jsx'
 
 const StyledGameCard = styled.div`
   height: 380px;
@@ -31,9 +32,11 @@ const StyledGameCard = styled.div`
 
 function GameCard(props) {
   const navigate = useNavigate()
+  const product = props.data;
   const { title, image } = props.data.gameTitle_id;
   const platformName = props.data.platform_id.name;
   const { _id, price } = props.data
+  const { addGame } = useShoppingListContext()
   return (
     <>
       <StyledGameCard>
@@ -45,7 +48,7 @@ function GameCard(props) {
           <StyledTitle>{title}</StyledTitle>
           <StyledPriceBar>
             {`${price.toFixed(2)}€`}
-            <StyledAddToCart>
+            <StyledAddToCart onClick={() => addGame(product)}>
               <StyledBasket src='src/components/GameCard/img/basket.png'/>
             </StyledAddToCart>
           </StyledPriceBar>
