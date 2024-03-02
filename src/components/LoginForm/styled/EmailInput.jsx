@@ -12,7 +12,7 @@ const EmailInput = styled.div`
   }
 `;
 
-function StyledEmailInput() {
+function StyledEmailInput({ value, setEmail }) {
   return (
     <EmailInput>
       <FormGroup>
@@ -24,6 +24,8 @@ function StyledEmailInput() {
             placeholder="Dirección de email"
             autoComplete="off"
             tabIndex=""
+            value={value}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </TextField>
       </FormGroup>

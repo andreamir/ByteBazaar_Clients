@@ -16,7 +16,7 @@ function RecoveryForm({
   toggleRegisterModal,
 }) {
   return (
-    <FormContainer>
+    <FormContainer title={title}>
       <FormHead handleDismiss={handleDismiss}>
         ¿Olvidaste tu contraseña?
       </FormHead>

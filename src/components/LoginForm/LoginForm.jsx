@@ -11,6 +11,7 @@ import ToRecovery from './styled/ToRecovery';
 import Footer from './styled/Footer';
 import ButtonContainer from './styled/ButtonContainer';
 import Button from './styled/Button';
+import useApi from '../../hooks/useApi';
 
 function LoginForm({
   title,
@@ -18,17 +19,44 @@ function LoginForm({
   toggleRegisterModal,
   toggleRecoveryModal,
 }) {
+  const [email, setEmail] = React.useState('');
+  const [password, setPassword] = React.useState('');
+  const { data, error, isLoading, getData } = useApi();
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    await getData({
+      route: '/auth/login',
+      method: 'POST',
+      // headers: { 
+      //   'Content-Type': 'application/json',
+      // },
+      body: {
+        email,
+        password,
+      },
+    });
+
+    
+
+    console.log(data);
+
+    setEmail(() => '');
+    setPassword(() => '');
+  }
+
   return (
     <FormContainer title={title}>
       <FormHead handleDismiss={handleDismiss}>Iniciar Sesión</FormHead>
-      <Form.Root>
+      <Form.Root onSubmit={handleSubmit}>
         <FormBody>
           <ToRegister
             handleDismiss={handleDismiss}
             toggleRegisterModal={toggleRegisterModal}
           />
-          <EmailInput />
-          <PasswordInput title="Contraseña" />
+          <EmailInput value={email} setEmail={setEmail} />
+          <PasswordInput value={password} setPassword={setPassword} title="Contraseña" />
           <ToRecovery
             handleDismiss={handleDismiss}
             toggleRecoveryModal={toggleRecoveryModal}
