@@ -1,15 +1,23 @@
 import { useParams } from 'react-router-dom'
 import ProductDetails from '../../components/ProductDetails/ProductDetails.jsx'
-import data from '../../data/twelveProducts.js'
+// import data from '../../data/twelveProducts.js'
 import useApi from '../../hooks/useApi.js'
-
+import { useEffect }  from 'react'
 
 function TestPageJanis() {
   const { id } = useParams()
 
-  const smth = useApi()
+  const { data, error, isLoading, getData } = useApi()
 
-  const product = data.products.find(product => product._id === id);
+  useEffect(() => {
+  getData({ route: '/gameTitles/productId/'+id })},
+ [])
+
+ useEffect(() => { 
+  console.log(data);
+ }, [data])
+ 
+   const product = data.find(gameTitle => _id === id);
 
   return (
     <>
