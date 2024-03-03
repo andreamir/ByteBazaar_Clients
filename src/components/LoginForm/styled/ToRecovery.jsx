@@ -21,11 +21,17 @@ const A = styled.a`
   }
 `;
 
-function StyledToRecovery() {
-
+function StyledToRecovery({ handleDismiss, toggleRecoveryModal }) {
   return (
     <ToRecovery>
-      <A>¿Olvidaste tu contraseña?</A>
+      <A
+        onClick={() => {
+          handleDismiss();
+          toggleRecoveryModal();
+        }}
+      >
+        ¿Olvidaste tu contraseña?
+      </A>
     </ToRecovery>
   );
 }

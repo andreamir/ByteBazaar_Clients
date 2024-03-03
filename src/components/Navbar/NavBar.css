@@ -1,0 +1,17 @@
+.backGroundNav{
+  background-color: #e20a03;
+  border-radius: 5px;
+  margin-bottom: 2em;
+  padding: 100%;
+}
+
+.loginRegister{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.6rem;
+  border: none;
+  background-color: none;
+  cursor: pointer;
+
+}
