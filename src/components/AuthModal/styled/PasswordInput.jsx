@@ -1,4 +1,4 @@
-import useToggle from '../../../hooks/use-toggle.hook';
+import { useToggle } from "@uidotdev/usehooks";
 import { styled } from 'styled-components';
 import FormGroup from './FormGroup';
 import TextFieldTitle from './TextFieldTitle';
