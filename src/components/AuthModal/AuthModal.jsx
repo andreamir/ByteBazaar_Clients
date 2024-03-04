@@ -1,7 +1,7 @@
 import Modal from '../Modal/Modal';
-import LoginForm from './LoginForm/LoginForm';
-import RegisterForm from './RegisterForm/RegisterForm';
-import RecoveryForm from './RecoveryForm/RecoveryForm';
+import LoginForm from './LoginForm';
+import RegisterForm from './RegisterForm';
+import RecoveryForm from './RecoveryForm';
 
 function AuthModal({ variant, handleDismiss, openSecondary, openTertiary }) {
 

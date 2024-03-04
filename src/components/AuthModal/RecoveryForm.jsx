@@ -1,13 +1,13 @@
 import React from 'react';
 import * as Form from '@radix-ui/react-form';
-import FormContainer from '../LoginForm/styled/FormContainer';
-import FormHead from '../LoginForm/styled/FormHead';
-import FormBody from '../LoginForm/styled/FormBody';
-import EmailInput from '../LoginForm/styled/EmailInput';
-import Footer from '../LoginForm/styled/Footer';
-import ButtonContainer from '../LoginForm/styled/ButtonContainer';
-import Button from '../LoginForm/styled/Button';
-import OutlinedButton from './styled/Button';
+import FormContainer from './styled/FormContainer';
+import FormHead from './styled/FormHead';
+import FormBody from './styled/FormBody';
+import EmailInput from './styled/EmailInput';
+import Footer from './styled/Footer';
+import ButtonContainer from './styled/ButtonContainer';
+import Button from './styled/Button';
+import OutlinedButton from './styled/OutlinedButton';
 
 function RecoveryForm({
   title,
