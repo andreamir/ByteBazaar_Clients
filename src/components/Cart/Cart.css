@@ -1,0 +1,11 @@
+.cart{
+  width: 5pz;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+}
+
+.popover .cartHeader {
+  text-align: center;
+  background-color: #E30804;
+}
