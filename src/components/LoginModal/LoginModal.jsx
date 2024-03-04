@@ -1,16 +1,13 @@
-import Modal from '../Modal/Modal';
-import LoginForm from '../LoginForm/LoginForm';
+import AuthModal from "../AuthModal/AuthModal";
 
 function LoginModal({ handleDismiss, toggleRegisterModal, toggleRecoveryModal }) {
   return (
-    <Modal handleDismiss={handleDismiss}>
-      <LoginForm
-        title="Login Form"
+      <AuthModal 
+        variant='login'
         handleDismiss={handleDismiss}
-        toggleRegisterModal={toggleRegisterModal}
-        toggleRecoveryModal={toggleRecoveryModal}
+        openSecondary={toggleRegisterModal}
+        openTertiary={toggleRecoveryModal}
       />
-    </Modal>
   );
 }
 

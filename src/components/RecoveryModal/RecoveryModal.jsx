@@ -1,5 +1,4 @@
-import Modal from '../Modal/Modal';
-import RecoveryForm from '../RecoveryForm/RecoveryForm';
+import AuthModal from "../AuthModal/AuthModal";
 
 function RecoveryModal({
   handleDismiss,
@@ -7,14 +6,12 @@ function RecoveryModal({
   toggleRegisterModal,
 }) {
   return (
-    <Modal handleDismiss={handleDismiss}>
-      <RecoveryForm
-        title="Recovery Form"
-        handleDismiss={handleDismiss}
-        toggleLoginModal={toggleLoginModal}
-        toggleRegisterModal={toggleRegisterModal}
-      />
-    </Modal>
+    <AuthModal 
+      variant='recovery'
+      handleDismiss={handleDismiss}
+      openSecondary={toggleLoginModal}
+      openTertiary={toggleRegisterModal}
+    />
   );
 }
 

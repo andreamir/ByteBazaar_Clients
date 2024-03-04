@@ -1,5 +1,5 @@
 import React from 'react';
-import useToggle from '../../hooks/use-toggle.hook';
+import { useToggle } from "@uidotdev/usehooks";
 import LoginModal from '../../components/LoginModal/LoginModal';
 import RegisterModal from '../../components/RegisterModal/RegisterModal';
 import RecoveryModal from '../../components/RecoveryModal/RecoveryModal';
