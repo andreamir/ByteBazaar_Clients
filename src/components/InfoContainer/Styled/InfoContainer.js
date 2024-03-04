@@ -5,6 +5,9 @@ const InfoContainer = styled.div`
   border: 1px solid #b3b3b3;
   border-radius: 16px;
   padding: 24px 16px;
+  &.title {
+    font-size: 100px;
+  }
 `
 
 export default InfoContainer
