@@ -3,20 +3,20 @@
  * This component is usin several common components with LoginForm
  */
 
-import styles from './RegisterForm.module.css';
-import FormContainer from '../LoginForm/styled/FormContainer';
-import FormHead from '../LoginForm/styled/FormHead';
+import styles from './Dialogs.module.css';
+import FormContainer from './styled/FormContainer';
+import FormHead from './styled/FormHead';
 import * as Form from '@radix-ui/react-form';
-import FormBody from '../LoginForm/styled/FormBody';
-import Footer from '../LoginForm/styled/Footer';
-import ButtonContainer from '../LoginForm/styled/ButtonContainer';
-import Button from '../LoginForm/styled/Button';
+import FormBody from './styled/FormBody';
+import Footer from './styled/Footer';
+import ButtonContainer from './styled/ButtonContainer';
+import Button from './styled/Button';
 import ToLogin from './styled/ToLogin';
 import FormCheck from './styled/FormCheck';
 import FormGroupRow from './styled/FormGroupRow';
-import EmailInput from '../LoginForm/styled/EmailInput';
-import PasswordInput from '../LoginForm/styled/PasswordInput'; // TODO: Use props to define stuff inside, the name is repeating
-import TextInput from '../LoginForm/styled/TextInput';
+import EmailInput from './styled/EmailInput';
+import PasswordInput from './styled/PasswordInput'; // TODO: Use props to define stuff inside, the name is repeating
+import TextInput from './styled/TextInput';
 
 function RegisterForm({ title, handleDismiss, toggleShowLoginModal }) {
   return (
