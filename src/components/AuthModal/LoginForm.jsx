@@ -11,6 +11,7 @@ import Footer from './styled/Footer';
 import ButtonContainer from './styled/ButtonContainer';
 import Button from './styled/Button';
 import useApi from '../../hooks/useApi';
+import { useNavigate } from 'react-router-dom'
 
 function LoginForm({
   title,
@@ -21,6 +22,7 @@ function LoginForm({
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
   const { data, error, isLoading, getData } = useApi();
+  const navigate = useNavigate()
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -28,9 +30,6 @@ function LoginForm({
     await getData({
       route: '/auth/login',
       method: 'POST',
-      // headers: { 
-      //   'Content-Type': 'application/json',
-      // },
       body: {
         email,
         password,
@@ -40,6 +39,7 @@ function LoginForm({
     
 
     console.log(data);
+    navigate('/account')
 
     setEmail(() => '');
     setPassword(() => '');

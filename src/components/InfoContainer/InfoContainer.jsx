@@ -1,10 +1,17 @@
 import StyledInfoContainer from './Styled/InfoContainer.js'
+import StyledTitleBar from './Styled/TitleBar.js'
+import StyledDataSection from './Styled/DataSection.js'
+import StyledLink from './Styled/Link.js'
 
 function InfoContainer(props) {
   const { title, data, link, button } = props
   return(
     <StyledInfoContainer>
-      <div className='title'>{title}</div>
+      <StyledTitleBar>
+        <p className='title'>{title}</p>
+        {button && <button>Editar</button>}
+      </StyledTitleBar>
+      <StyledDataSection>
       {data && Object.keys(data).map((key) => 
       <>
         <div key={key} className='data'>
@@ -13,6 +20,8 @@ function InfoContainer(props) {
         </div>
       </>)
       }
+      </StyledDataSection>
+      {link && <StyledLink>{link}</StyledLink>}
     </StyledInfoContainer>
   )
 }
