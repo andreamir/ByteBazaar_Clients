@@ -1,5 +1,4 @@
 import { styled } from 'styled-components';
-import styles from './LocalStyles.module.css';
 
 // .form-check
 const FormCheck = styled.div`
@@ -49,7 +48,7 @@ function StyledFormCheck({ children }) {
           name={'TODO SOON: GET FROM PROPS'}
         />
         {/* <CheckMark /> */}
-        <p className={styles["form-check-label"]}>
+        <p style={{ marginLeft: '8px' }}>
           {children}
         </p>
       </CheckboxButton>
