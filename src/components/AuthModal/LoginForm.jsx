@@ -8,7 +8,6 @@ import SwitchModal from './styled/SwitchModal';
 import Input from './styled/Input';
 import Button from './styled/Button';
 import FlashError from './styled/FlashError';
-import useApi from '../../hooks/useApi';
 import { useNavigate } from 'react-router-dom'
 
 function LoginForm({
