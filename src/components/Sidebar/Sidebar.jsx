@@ -1,21 +1,34 @@
 import { useState } from 'react';
 import styled from 'styled-components';
+import data from '../../data/twelveProducts';
 
 const StyledSidebar = styled.div`
   width: 300px;
-  height: 600px;
+  min-height: 600px;
+  height:auto;
   background-color: #F9F9F9;
 `;
 
-const filters = [
-  { title: 'Genre', options: ['Platforms', 'Rol', 'Accion', 'Fantasy'] },
-  { title: 'Platforms', options: ['PS5', 'Nintendo Switch'] },
-];
-
 function Sidebar(props) {
+  function getFilters() {
+    const filters = [{ title: 'Genre', options: []}, { title: 'Platforms', options: []},];
+  
+    data.products.forEach(product => {
+      if (!filters[0].options.includes(product.genre)) {
+        filters[0].options.push(product.genre);
+      }
+  
+      if (product.platform_id?.name && !filters[1].options.includes(product.platform_id.name)) {
+        filters[1].options.push(product.platform_id.name);
+      }
+    });
+    
+    return filters;
+  }
+  
   const [expandedIndexes, setExpandedIndexes] = useState([]);
   const [checked, setChecked] = useState([]);
-  const { title } = props;
+
   function handleClickExpanded(index) {
     if (expandedIndexes.includes(index)) {
       setExpandedIndexes(expandedIndexes.filter((item) => item !== index));
@@ -33,15 +46,17 @@ function Sidebar(props) {
     console.log('Option checked', checked);
   }
 
+  const filters = getFilters();
+
   return (
     <StyledSidebar>
-      <h2>{title || 'Optional title'}</h2>
+      <h2>{props.title || 'Optional title'}</h2>
       <div className="accordion">
         {filters.map((filter, index) => (
           <div className="accordion-item" key={index}>
             <h2 className="accordion-header">
               <button
-                className={`accordion-button ${expandedIndexes.includes(index) ? 'collapsed' : ''}`}
+                className={`accordion-button ${expandedIndexes.includes(index) ? '' : 'collapsed'}`}
                 style={{ backgroundColor: '#f9f9f9' }}
                 type="button"
                 aria-expanded={expandedIndexes.includes(index)}
@@ -64,7 +79,9 @@ function Sidebar(props) {
                             id={`checkbox-${index}-${optionIndex}`}
                             onChange={() => handleCheckbox(option)}
                           />
+                          <label className="form-check-label" htmlFor={`checkbox-${index}-${optionIndex}`}>
                             {option}
+                          </label>
                         </div>
                       </div>
                     ))}
