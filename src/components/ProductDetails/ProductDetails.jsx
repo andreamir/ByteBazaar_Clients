@@ -6,14 +6,11 @@ import play5Url from '../../assets/platforms/PlayStation5.png'
 import wiiUrl from '../../assets/platforms/wii.png'
 import xboxUrl from '../../assets/platforms/xbox.png'
 
-function ProductDetails(props){
-   const { product } = props
-   const { title, image } = product.gameTitle_id;
-   const platformName = product.platform_id.name;
-   const { _id, price, stock } = product
-   let overlayUrl =''
+function ProductDetail(props) {
+  const { title, image, description, price, stock, platform, genres } = props
+  let overlayUrl = ''
 
-   switch (platformName) {
+  switch (platform) {
     case 'PC':
       overlayUrl = pcUrl
       break;
@@ -26,7 +23,7 @@ function ProductDetails(props){
       break;
     case 'PlayStation5':
       overlayUrl = play5Url
-      break;  
+      break;
     case 'PlayStation1':
       overlayUrl = play1Url
       break;
@@ -35,12 +32,12 @@ function ProductDetails(props){
       break;
     case 'NintendoSwitch':
       overlayUrl = switchUrl
-      break;    
+      break;
     default:
-      console.log('platform name is missing');
+    // console.error('platform name is missing');
   }
 
-  return(
+  return (
     <>
       <div className="container my-5">
         <div className="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
@@ -48,7 +45,7 @@ function ProductDetails(props){
             <div className="lc-block" style={{ position: 'relative' }}>
               <img className="rounded-start w-100" src={image} alt={title} width="720" />
               <img src={overlayUrl}
-                alt={`${title} ${platformName}`}
+                alt={`${title} ${platform}`}
                 style={{
                   position: 'absolute',
                   bottom: '3%',
@@ -62,6 +59,7 @@ function ProductDetails(props){
 
           <div className="col-lg-7 p-3 p-lg-5 pt-lg-3 order-lg-2">
             <div className="lc-block mb-3">
+              <div className='block float-right'>{platform}</div>
               <div editable="rich">
                 <h2 className="fw-bold display-4">{title}</h2>
                 <div className='w-100 d-inline-block'>
@@ -71,7 +69,8 @@ function ProductDetails(props){
 
             <div className="lc-block mb-3">
               <div editable="rich">
-                <p className="lead">Quickly design and customize responsive mobile-first sites with Bootstrap, the world's most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>
+                <p className="lead">{description}</p>
+                <p>Genre: <i>{genres}</i></p>
               </div>
             </div>
 
@@ -83,7 +82,7 @@ function ProductDetails(props){
         </div>
       </div>
     </>
-  ) 
+  )
 }
 
-export default ProductDetails
+export default ProductDetail

@@ -11,7 +11,7 @@ function Navbar(props) {
     const [showRegisterModal, toggleRegisterModal] = useToggle(false);
     const [showRecoveryModal, toggleRecoveryModal] = useToggle(false);
     const {elements, title, logo} = props; 
-    console.log(elements);
+    // console.log(elements);
     return (
 		<>
 			<nav key='navBar' className="navbar navbar-expand-lg fixed-top backGroundNav">
@@ -27,7 +27,7 @@ function Navbar(props) {
                 
 									<li key={tab.title} className="nav-item">
 										<a className="nav-link" aria-current="page" href={tab.path}>{`${tab.title}`}</a>
-                    {console.log(tab)}
+                    {/* {console.log(tab)} */}
 									</li>
 								)}         
 							</ul>

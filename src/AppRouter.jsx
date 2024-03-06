@@ -1,6 +1,6 @@
 import { useRoutes } from 'react-router-dom'
 import App from './App'
-import ProductDetail from './pages/ProductDetail/ProductDetail.jsx'
+import ProductDetails from './pages/ProductDetails/ProductDetails.jsx'
 import CarouselDemo from './pages/CarouselDemo/CarouselDemo.jsx'
 import TestPageRenzo from './pages/TestPageRenzo/TestPageRenzo'
 import GameCardDemo from './pages/GameCardDemo/GameCardDemo.jsx'
@@ -17,10 +17,6 @@ function AppRouter() {
     {
       element: <TestPageRenzo />,
       path: '/testpagerenzo',
-    },
-    {
-      element: <ProductDetail />,
-      path: '/product/:id'
     },
     {
       element: <CarouselDemo />,
@@ -41,6 +37,10 @@ function AppRouter() {
     {
       element: <Account />,
       path: '/account',
+    },
+    {
+      element: <ProductDetails />,
+      path: '/productdetails/:id'
     },
   ]);
 }

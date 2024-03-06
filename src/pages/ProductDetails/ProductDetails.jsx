@@ -1,9 +1,9 @@
 import { useParams } from 'react-router-dom'
-import ProductDetails from '../../components/ProductDetails/ProductDetails.jsx'
+import ProductDetail from '../../components/ProductDetails/ProductDetails.jsx'
 import useApi from '../../hooks/useApi.js'
 import { useEffect, useState } from 'react'
 
-function TestPageJanis() {
+function ProductDetails() {
   const { id } = useParams() // product id
 
   const productHook = useApi();
@@ -49,7 +49,7 @@ function TestPageJanis() {
   return (
     <>
       <div className='productDetails>'>
-        <ProductDetails
+        <ProductDetail
           title={title}
           image={image}
           description={description}
@@ -63,4 +63,4 @@ function TestPageJanis() {
   )
 }
 
-export default TestPageJanis
+export default ProductDetails
