@@ -8,6 +8,8 @@ import SwitchModal from './styled/SwitchModal';
 import Input from './styled/Input';
 import Button from './styled/Button';
 import FlashError from './styled/FlashError';
+import useApi from '../../hooks/useApi';
+import { useNavigate } from 'react-router-dom'
 
 function LoginForm({
   title,
@@ -21,6 +23,7 @@ function LoginForm({
   }));
 
   const { data, error, isLoading, getData } = useApi();
+  const navigate = useNavigate()
 
   function handleChange(e) {
     setFormValues({ ...formValues, [e.target.name]: e.target.value });
@@ -40,6 +43,7 @@ function LoginForm({
 
     console.log(data);
     setFormValues({ email: '', password: '' });
+    navigate('/account');
   }
 
   return (

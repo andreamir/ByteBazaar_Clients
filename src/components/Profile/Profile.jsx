@@ -33,6 +33,7 @@ function Profile(props) {
       button: false,
     }
   ]
+  
   return (
     <StyledProfile>
       <h1>Tu perfil</h1>

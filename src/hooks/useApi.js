@@ -7,17 +7,18 @@ function useApi() {
   const [error, setError] = useState()
   const [isLoading, setIsLoading] = useState(false)
 
-  async function getData({ route, method='GET', body, headers={} }){
+  async function getData({ route, method = 'GET', body, headers = {} }) {
     setError()
     setData()
     setIsLoading(true)
 
-    const response = await fetch(endpoint+route, {
+    const response = await fetch(endpoint + route, {
       method,
-      headers: { 
+      headers: {
         'Content-Type': 'application/json',
         'Authorization': localStorage.token,
-        ...headers },
+        ...headers
+      },
       body: body ? JSON.stringify(body) : undefined
     })
     if (response.ok) {
