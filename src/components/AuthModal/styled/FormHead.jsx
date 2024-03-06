@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
 import { X as Close } from 'react-feather';
-import VisuallyHidden from '../../../components/VisuallyHidden/VisuallyHidden';
+import * as VisuallyHidden from '@radix-ui/react-visually-hidden';
 
 const FormHead = styled.header`
   align-items: center;
@@ -58,7 +58,7 @@ function StyledFormHead({ children, handleDismiss }) {
           {/* TODO: FIX UI BUG: ICON DOESN'T SCALE WITH MEDIA QUERIES */}
           <Close />
         </CloseIcon>
-        <VisuallyHidden>Dismiss modal</VisuallyHidden>
+        <VisuallyHidden.Root>Dismiss modal</VisuallyHidden.Root>
       </ModalClose>
     </FormHead>
   );
