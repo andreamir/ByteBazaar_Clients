@@ -13,16 +13,24 @@ import FlashError from './styled/FlashError';
 
 function RegisterForm({ title, handleDismiss, toggleShowLoginModal }) {
   const [formValues, setFormValues] = React.useState(() => ({
-    name: '',
-    surname: '',
-    email: '',
-    password: '',
-    passwordConfirmation: '',
-    phone: '',
+    name: '', surname: '', email: '', password: '',
+    passwordConfirmation: '', phone: '',
   }));
+  // console.log(formValues);
+  const [showNotImplemented, toggleShowNotImplementes] = useToggle(false);
+  const [invalidTherms, toggleInvalidTherms] = useToggle(false);
 
   function handleChange(e) {
     setFormValues({ ...formValues, [e.target.name]: e.target.value });
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    toggleShowNotImplementes();
+    setFormValues({
+      name: '', surname: '', email: '', password: '',
+      passwordConfirmation: '', phone: '',
+    });
   }
 
   return (
@@ -30,10 +38,12 @@ function RegisterForm({ title, handleDismiss, toggleShowLoginModal }) {
       <FormHead handleDismiss={handleDismiss}>
         Regístrate con ByteBazaar
       </FormHead>
-      <Form.Root>
+      <Form.Root onSubmit={handleSubmit}>
+
+        {showNotImplemented && <FlashError variant={'notImplemented'} />}
 
         {/* Switch to Login Modal */}
-        <SwitchModal 
+        <SwitchModal
           description="¿Ya tienes cuenta?"
           linkText="Inicia sesión aquí"
           handleSwitch={() => {
@@ -43,9 +53,9 @@ function RegisterForm({ title, handleDismiss, toggleShowLoginModal }) {
         />
 
         <FormGroupRow>
-          
           <Input
-            variant="text"
+            variant="name"
+            type="text"
             title="Nombre"
             name="name"
             placeholder="Nombre"
@@ -54,7 +64,8 @@ function RegisterForm({ title, handleDismiss, toggleShowLoginModal }) {
           />
 
           <Input
-            variant="text"
+            variant="surname"
+            type="text"
             title="Apellido"
             name="surname"
             placeholder="Apellido"
@@ -62,8 +73,9 @@ function RegisterForm({ title, handleDismiss, toggleShowLoginModal }) {
             setValue={handleChange}
           />
 
-          <Input 
+          <Input
             variant="email"
+            type="email"
             title="Dirección de email"
             name="email"
             placeholder="Dirección de email"
@@ -71,8 +83,9 @@ function RegisterForm({ title, handleDismiss, toggleShowLoginModal }) {
             setValue={handleChange}
           />
 
-          <Input 
+          <Input
             variant="password"
+            type="password"
             title="Contraseña"
             name="password"
             placeholder="Contraseña"
@@ -80,8 +93,10 @@ function RegisterForm({ title, handleDismiss, toggleShowLoginModal }) {
             setValue={handleChange}
           />
 
-          <Input 
-            variant="password"
+          <Input
+            variant="passwordConfirmation"
+            mustMatch={formValues.password}
+            type="password"
             title="Confirmar contraseña"
             name="passwordConfirmation"
             placeholder="Confirmar contraseña"
@@ -89,15 +104,15 @@ function RegisterForm({ title, handleDismiss, toggleShowLoginModal }) {
             setValue={handleChange}
           />
 
-          <Input 
-            variant="text"
+          <Input
+            variant="phone"
+            type="text"
             title="Teléfono de contacto (optional)"
             name="phone"
             placeholder="Teléfono de contacto"
             value={formValues.phone}
             setValue={handleChange}
           />
-
         </FormGroupRow>
 
         {/* CHECKBOXES */}
@@ -116,12 +131,7 @@ function RegisterForm({ title, handleDismiss, toggleShowLoginModal }) {
           </FormCheck>
         </div>
 
-        <Button 
-          type="submit"
-          variant="submit"
-          title="Crear cuenta"
-        />
-        
+        <Button type="submit" variant="submit" title="Crear cuenta" />
       </Form.Root>
     </FormContainer>
   );

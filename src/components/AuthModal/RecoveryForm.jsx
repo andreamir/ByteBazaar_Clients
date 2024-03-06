@@ -89,6 +89,7 @@ function RecoveryForm({
 
         <Input
           variant="email"
+          type='email'
           title="Dirección de email"
           name="email"
           placeholder="Dirección de email"
