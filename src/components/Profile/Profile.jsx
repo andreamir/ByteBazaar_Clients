@@ -6,16 +6,25 @@ function Profile(props) {
   const parsedUserData = [
     {
       title: 'Información Personal',
-      data: {
-        Nombre: data.firstName,
-        Apellido: data.lastName,
+      details: {
+        Nombre: {
+          value: data.firstName,
+          ref: 'firstName',
+        },
+        Apellido: {
+          value: data.lastName,
+          ref: 'lastName',
+        },
       },
       button: true,
     },
     {
       title: 'Dirección de email',
-      data: {
-        email: data.email,
+      details: {
+        email: {
+          value: data.email,
+          ref: 'email',
+        },
       },
       button: true,
     },
@@ -26,9 +35,15 @@ function Profile(props) {
     },
     {
       title: 'Crédito',
-      data: {
-        crédito: data.credit,
-        points: data.points,
+      details: {
+        crédito: {
+          value: data.credit,
+          ref: 'credit',
+        },
+        puntos: {
+          value: data.points,
+          ref: 'points',
+        },
       },
       button: false,
     }
@@ -38,9 +53,9 @@ function Profile(props) {
     <StyledProfile>
       <h1>Tu perfil</h1>
       {parsedUserData.map((info) => <InfoContainer
-      key={info.title}
+      key={`${info.title} info`}
       title={info.title}
-      data={info.data}
+      details={info.details}
       link={info.link}
       button={info.button} 
       />)
