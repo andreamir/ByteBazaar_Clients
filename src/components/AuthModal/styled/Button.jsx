@@ -51,6 +51,9 @@ const Button = styled.button.attrs((props) => ({
   font-weight: 600;
   line-height: 18px;
   padding: 8.5px 15px;
+
+  /* // TODO: Different transition durations for different attributes! */
+  /* For instance, this duration doesn't work at all when disabling buttons for a brief period of time */
   transition: all 0.8s cubic-bezier(0.78, 0.13, 0.15, 0.86);
 
   background-color:       ${(props) => COLORS[props.$variant].background};
@@ -90,13 +93,14 @@ const Button = styled.button.attrs((props) => ({
   }
 `;
 
-function StyledButton({ title, type, variant, handleSwitch }) {
+function StyledButton({ title, type, variant, handleSwitch, disabled }) {
   if (handleSwitch) {
     return (
     <Button
       type={type}
       $variant={variant}
       onClick={handleSwitch}
+      disabled={disabled}
     >
       {title}
     </Button>
@@ -107,6 +111,7 @@ function StyledButton({ title, type, variant, handleSwitch }) {
         <Button
           type={type}
           $variant={variant}
+          disabled={disabled}
         >
           {title}
         </Button>

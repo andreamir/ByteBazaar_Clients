@@ -62,14 +62,20 @@ const MessageContent = styled.span`
 
 function StyledFlashError({ children, variant }) {
   let message;
+
   const VARIANTS = {
-    therms: 'Por favor, confirma tu edad y acepta nuestros Términos y Condiciones y la Política de Privacidad para registrarte',
+    notImplemented: 'API Fetch not yet implemented',
+    mailOrPassword:
+      'Lo sentimos, al parecer tu correo electrónico o tu contraseña no son correctos. Por favor, revisalos e intentalo de nuevo',
+    therms:
+      'Por favor, confirma tu edad y acepta nuestros Términos y Condiciones y la Política de Privacidad para registrarte',
     name: 'Caracter inválido en la casilla nombre.',
     surname: 'Caracter inválido en la casilla apellido.',
     email: 'Email no valido.',
-    password: 'Tu contraseña es incorrecta. Por favor revisa e intenta de nuevo.',
-    
-  }
+    password:
+      'Tu contraseña es incorrecta. Por favor revisa e intenta de nuevo.',
+  };
+
   if (children) {
     message = children;
   } else {
@@ -87,6 +93,5 @@ function StyledFlashError({ children, variant }) {
     </Container>
   );
 }
-
 
 export default StyledFlashError;

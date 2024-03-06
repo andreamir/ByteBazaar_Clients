@@ -1,6 +1,6 @@
 import React from 'react';
 import * as Form from '@radix-ui/react-form';
-// import { useToggle } from '@uidotdev/usehooks';
+import { useToggle } from '@uidotdev/usehooks';
 import useApi from '../../hooks/useApi';
 import FormContainer from './styled/FormContainer';
 import FormHead from './styled/FormHead';
@@ -21,6 +21,10 @@ function LoginForm({
     password: '',
   }));
 
+  // TODO: Switch to true if login request returns 'Invalid email or password' error,
+  // situations: account doesn't exist, password is incorrect
+  const [errorFlash, toggleErrorFlash] = useToggle(false);
+
   const { data, error, isLoading, getData } = useApi();
   const navigate = useNavigate()
 
@@ -40,7 +44,11 @@ function LoginForm({
       },
     });
 
-    console.log(data);
+    if (error && !errorFlash) {
+      toggleErrorFlash();
+    }
+
+    console.log(data, error);
     setFormValues({ email: '', password: '' });
     navigate('/account');
   }
@@ -50,6 +58,7 @@ function LoginForm({
       <FormHead handleDismiss={handleDismiss}>Iniciar Sesión</FormHead>
       <Form.Root onSubmit={handleSubmit}>
         {/* ---> ---> ---> FLASH MESSAGES HERE <--- <--- <--- */}
+        {errorFlash && <FlashError variant="mailOrPassword" />}
 
         {/* Switch to Register Modal */}
         <SwitchModal
@@ -64,20 +73,24 @@ function LoginForm({
         {/* Email Input */}
         <Input
           variant="email"
+          type='email'
           title="Dirección de email"
           name="email"
           placeholder="Dirección de email"
           value={formValues.email}
+          disabled={isLoading}
           setValue={handleChange}
         />
 
         {/* Password Input */}
         <Input
           variant="password"
+          type='password'
           title="Contraseña"
           name="password"
           placeholder="Contraseña"
           value={formValues.password}
+          disabled={isLoading}
           setValue={handleChange}
         />
 
@@ -90,7 +103,12 @@ function LoginForm({
           }}
         />
 
-        <Button variant="submit" type="submit" title="Iniciar Sesión" />
+        <Button
+          variant="submit"
+          type="submit"
+          title="Iniciar Sesión"
+          disabled={isLoading}
+        />
       </Form.Root>
     </FormContainer>
   );
@@ -102,4 +120,3 @@ export default LoginForm;
  * Uning unstyled Radix primitives. Check link for anatomy.
  * https://www.radix-ui.com/primitives/docs/components/form#form
  */
-

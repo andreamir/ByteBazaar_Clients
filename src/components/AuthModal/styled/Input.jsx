@@ -1,25 +1,3 @@
-/**
- * Usage:
- * Import the component and specify the following props:
- * - variant // 'text' | 'email' | 'password' // must be valid html input type
- * - title // Will be displayed
- * - name // needed when updating form state as object
- * - placeholder // Will be displayed
- * - value // should come from state
- * - setValue // state setter funtion, needs no arguments
- * import Input from '...'
- * 
- * Example:
- * <Input
- *   variant="password"
- *   title="Contraseña"
- *   name="password"
- *   placeholder="Contraseña"
- *   value={formValues.password}
- *   setValue={handleChange}
- * />
- */
-
 import { styled } from 'styled-components';
 import { useToggle } from '@uidotdev/usehooks';
 import { Eye } from 'react-feather';
@@ -113,44 +91,89 @@ const VisibilityIcon = styled.i`
 `;
 
 function StyledInput({
-  variant = 'text', // must be valid html input type
+  variant = 'text',
+  type = 'text',
   name = 'text',
+  mustMatch = undefined,
   title = 'Missing title prop',
-  placeholder = 'Missin placeholder prop',
+  placeholder = 'Missing placeholder prop',
   value = '',
+  disabled = false,
   setValue = () => alert('Missing onChange Setter'),
 }) {
+  // console.log(variant, value);
   const [passwordVisibility, togglePasswordVisibility] = useToggle(false);
+  const TEXT_VARIANTS = ['text', 'name', 'surname', 'email', 'phone'];
+  const PASSWORD_VARIANTS = ['password', 'passwordConfirmation'];
+  const INVALID_MESSAGE = {
+    text: 'Please provide a valid text',
+    name: 'Please provide a valid name',
+    surname: ' Please provide a valid surname',
+    email: 'Please provide a valid email',
+    phone: 'Please provide a valid phone',
+  };
+  const INVALID_MISSING = {
+    text: 'Please provide a text',
+    name: 'Please provide a name',
+    surname: ' Please provide a surname',
+    email: 'Please provide an email',
+    phone: 'Please provide a phone',
+  };
 
-  if (variant === 'email' || variant === 'text') {
-
+  if (TEXT_VARIANTS.includes(variant)) {
     return (
       <InputContainer>
         <TextFieldTitle>{title}</TextFieldTitle>
+
         <TextField>
+
           <Input
-            type={variant}
+            variant={variant}
+            type={type}
             name={name}
             placeholder={placeholder}
             autoComplete="off"
+            disabled={disabled}
+            required={variant === 'phone' ? false : true}
             value={value}
             onChange={setValue}
           />
+
         </TextField>
+
+        <Form.Message style={{ color: 'red' }} match="typeMismatch" name={name}>
+          {INVALID_MESSAGE[variant]}
+        </Form.Message>
+
+        <Form.Message style={{ color: 'red' }} match="valueMissing" name={name}>
+          {INVALID_MISSING[variant]}
+        </Form.Message>
+
+        {variant === 'phone' && (
+          <Form.Message
+            style={{ color: 'red' }}
+            match={() => !(/^\d{7,12}$/.test(value))} // phone with 7 to 12 digits
+            name={name}
+          >
+            Please provide a valid phone number
+          </Form.Message>
+        )}
+        
       </InputContainer>
     );
-
-  } else if (variant === 'password') {
-
+  } else if (PASSWORD_VARIANTS.includes(variant)) {
     return (
       <InputContainer>
         <TextFieldTitle>{title}</TextFieldTitle>
         <TextField>
           <Input
+            variant={variant}
             type={passwordVisibility ? 'text' : 'password'}
-            name="password"
+            name={name}
+            required={true}
             placeholder={placeholder}
             autoComplete="off"
+            disabled={disabled}
             value={value}
             onChange={setValue}
           />
@@ -160,8 +183,25 @@ function StyledInput({
             </div>
           </VisibilityIcon>
         </TextField>
+        {variant === 'password' && (
+          <Form.Message
+            style={{ color: 'red' }}
+            match="valueMissing"
+            name={name}
+          >
+            Please enter your password
+          </Form.Message>
+        )}
+        {variant === 'passwordConfirmation' && (
+          <Form.Message
+            style={{ color: 'red' }}
+            match={() => value !== mustMatch}
+            name={name}
+          >
+            Las contraseñas no coinciden
+          </Form.Message>
+        )}
       </InputContainer>
-
     );
   }
 }
