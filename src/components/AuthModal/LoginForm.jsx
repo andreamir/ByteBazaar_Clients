@@ -33,15 +33,13 @@ function LoginForm({
       route: '/auth/login',
       method: 'POST',
       body: {
-        email,
-        password,
+        email: formValues.email,
+        password: formValues.password,
       },
     });
 
     console.log(data);
-
-    setEmail(() => '');
-    setPassword(() => '');
+    setFormValues({ email: '', password: '' });
   }
 
   return (
@@ -89,12 +87,7 @@ function LoginForm({
           }}
         />
 
-        <Button 
-          variant='submit'
-          type='submit'
-          title='Iniciar Sesión'
-        />
-
+        <Button variant="submit" type="submit" title="Iniciar Sesión" />
       </Form.Root>
     </FormContainer>
   );
@@ -103,19 +96,7 @@ function LoginForm({
 export default LoginForm;
 
 /**
- * Unstyled Radix Components in use... (for reference)
+ * Uning unstyled Radix primitives. Check link for anatomy.
  * https://www.radix-ui.com/primitives/docs/components/form#form
  */
 
-/**
- * TODO: Replace returning tag with Radix unstyled components
- * EmailInput / PasswordInput -> Form.Field
- * TextFieldTitle -> Form.Label
- * Input -> Form.Control with nested input... with asChild attr?
- * Form.Message ... implement usage for error and other messages
- * <Form.Message match="valueMissing">Dirección de email</Form.Message>
- * <Form.Message match="typeMismatch">Por favor ingrese un email válido</Form.Message>
- * <Form.Submit asChild>
- *   <button style={{ marginTop: 10 }}>Login</button>
- * </Form.Submit>
- */

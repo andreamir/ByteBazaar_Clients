@@ -24,8 +24,10 @@ import { styled } from 'styled-components';
 import { useToggle } from '@uidotdev/usehooks';
 import { Eye } from 'react-feather';
 import { EyeOff } from 'react-feather';
+import * as Form from '@radix-ui/react-form';
 
-const InputContainer = styled.div`
+// Radix Form.Field
+const InputContainer = styled(Form.Field)`
   margin-bottom: 24px;
 
   @media (min-width: 768px) {
@@ -33,7 +35,8 @@ const InputContainer = styled.div`
   }
 `;
 
-const TextFieldTitle = styled.label`
+// Radix Form.Label
+const TextFieldTitle = styled(Form.Label)`
   color: #0d0d0d;
   display: block;
   font-size: 12px;
@@ -69,7 +72,8 @@ const TextField = styled.div`
   }
 `;
 
-const Input = styled.input`
+// Radix Form.Control
+const Input = styled(Form.Control)`
   font-family: inherit;
   line-height: 1.15;
   margin: 0;

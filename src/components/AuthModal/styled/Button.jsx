@@ -11,6 +11,7 @@
  */
 
 import { styled } from 'styled-components';
+import * as Form from '@radix-ui/react-form';
 
 const COLORS = {
   submit: {
@@ -102,12 +103,14 @@ function StyledButton({ title, type, variant, handleSwitch }) {
     );
   } else {
     return (
-      <Button
-        type={type}
-        $variant={variant}
-      >
-        {title}
-      </Button>
+      <Form.Submit asChild>
+        <Button
+          type={type}
+          $variant={variant}
+        >
+          {title}
+        </Button>
+      </Form.Submit>
     );
   }
 }
