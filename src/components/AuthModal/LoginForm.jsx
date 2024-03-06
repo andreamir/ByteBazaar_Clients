@@ -1,15 +1,13 @@
 import React from 'react';
 import * as Form from '@radix-ui/react-form';
+// import { useToggle } from '@uidotdev/usehooks';
+import useApi from '../../hooks/useApi';
 import FormContainer from './styled/FormContainer';
 import FormHead from './styled/FormHead';
-import FormBody from './styled/FormBody';
-import ToRegister from './styled/ToRegister';
-import EmailInput from './styled/EmailInput';
-import PasswordInput from './styled/PasswordInput';
-import ToRecovery from './styled/ToRecovery';
-import Footer from './styled/Footer';
-import ButtonContainer from './styled/ButtonContainer';
+import SwitchModal from './styled/SwitchModal';
+import Input from './styled/Input';
 import Button from './styled/Button';
+import FlashError from './styled/FlashError';
 import useApi from '../../hooks/useApi';
 import { useNavigate } from 'react-router-dom'
 
@@ -19,10 +17,17 @@ function LoginForm({
   toggleRegisterModal,
   toggleRecoveryModal,
 }) {
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
+  const [formValues, setFormValues] = React.useState(() => ({
+    email: '',
+    password: '',
+  }));
+
   const { data, error, isLoading, getData } = useApi();
   const navigate = useNavigate()
+
+  function handleChange(e) {
+    setFormValues({ ...formValues, [e.target.name]: e.target.value });
+  }
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -31,41 +36,62 @@ function LoginForm({
       route: '/auth/login',
       method: 'POST',
       body: {
-        email,
-        password,
+        email: formValues.email,
+        password: formValues.password,
       },
     });
 
-    
-
     console.log(data);
-    navigate('/account')
-
-    setEmail(() => '');
-    setPassword(() => '');
+    setFormValues({ email: '', password: '' });
+    navigate('/account');
   }
 
   return (
     <FormContainer title={title}>
       <FormHead handleDismiss={handleDismiss}>Iniciar Sesión</FormHead>
       <Form.Root onSubmit={handleSubmit}>
-        <FormBody>
-          <ToRegister
-            handleDismiss={handleDismiss}
-            toggleRegisterModal={toggleRegisterModal}
-          />
-          <EmailInput value={email} setEmail={setEmail} />
-          <PasswordInput value={password} setPassword={setPassword} title="Contraseña" />
-          <ToRecovery
-            handleDismiss={handleDismiss}
-            toggleRecoveryModal={toggleRecoveryModal}
-          />
-        </FormBody>
-        <Footer>
-          <ButtonContainer>
-            <Button>Iniciar Sesión</Button>
-          </ButtonContainer>
-        </Footer>
+        {/* ---> ---> ---> FLASH MESSAGES HERE <--- <--- <--- */}
+
+        {/* Switch to Register Modal */}
+        <SwitchModal
+          description="¿No tienes cuenta?"
+          linkText="¡Regístrate!"
+          handleSwitch={() => {
+            handleDismiss();
+            toggleRegisterModal();
+          }}
+        />
+
+        {/* Email Input */}
+        <Input
+          variant="email"
+          title="Dirección de email"
+          name="email"
+          placeholder="Dirección de email"
+          value={formValues.email}
+          setValue={handleChange}
+        />
+
+        {/* Password Input */}
+        <Input
+          variant="password"
+          title="Contraseña"
+          name="password"
+          placeholder="Contraseña"
+          value={formValues.password}
+          setValue={handleChange}
+        />
+
+        {/* Switch to Recovery Modal */}
+        <SwitchModal
+          linkText="¿Olvidaste tu contraseña?"
+          handleSwitch={() => {
+            handleDismiss();
+            toggleRecoveryModal();
+          }}
+        />
+
+        <Button variant="submit" type="submit" title="Iniciar Sesión" />
       </Form.Root>
     </FormContainer>
   );
@@ -74,19 +100,7 @@ function LoginForm({
 export default LoginForm;
 
 /**
- * Unstyled Radix Components in use... (for reference)
+ * Uning unstyled Radix primitives. Check link for anatomy.
  * https://www.radix-ui.com/primitives/docs/components/form#form
  */
 
-/**
- * TODO: Replace returning tag with Radix unstyled components
- * EmailInput / PasswordInput -> Form.Field
- * TextFieldTitle -> Form.Label
- * Input -> Form.Control with nested input... with asChild attr?
- * Form.Message ... implement usage for error and other messages
- * <Form.Message match="valueMissing">Dirección de email</Form.Message>
- * <Form.Message match="typeMismatch">Por favor ingrese un email válido</Form.Message>
- * <Form.Submit asChild>
- *   <button style={{ marginTop: 10 }}>Login</button>
- * </Form.Submit>
- */
