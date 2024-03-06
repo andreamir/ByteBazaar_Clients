@@ -9,10 +9,8 @@ function ShoppingListProvider(props) {
   const [total, setTotal] = useState(0)
 
   function addGame(game) {
-    // console.log(game);
     const ids = tabGames.map(tabGame => tabGame._id)
-    // if(!ids.includes(game._id))
-      setTabGames([...tabGames, game]);
+    setTabGames([...tabGames, game]);
   }
   function substractGame(game) {
     let firstOcurrence = false;
@@ -43,11 +41,11 @@ function ShoppingListProvider(props) {
     qty: counter[_id]
     }));
     setCartList(newCartList)
+    console.log(newCartList);
   }
 
   useEffect(()=>{
     generateCartList();
-    // console.log(cartList);
   }, [tabGames])
 
   function calculateTotal() {
