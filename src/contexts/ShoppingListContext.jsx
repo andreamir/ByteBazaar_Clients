@@ -41,7 +41,6 @@ function ShoppingListProvider(props) {
     qty: counter[_id]
     }));
     setCartList(newCartList)
-    console.log(newCartList);
   }
 
   useEffect(()=>{
