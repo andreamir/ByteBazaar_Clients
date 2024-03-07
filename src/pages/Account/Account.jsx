@@ -12,9 +12,13 @@ function Account() {
     getData(petition)
   }, [])
 
+  function reloadData() {
+    getData(petition)
+  }
+
   return(
     <>
-      {data && <Profile data={data}></Profile>}
+      {data && <Profile reload={reloadData} data={data}></Profile>}
       {error && <p>{error.msg}</p>}
       {isLoading && <p>Loading</p>}
     </>

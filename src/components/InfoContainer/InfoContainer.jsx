@@ -7,13 +7,11 @@ import useApi from '../../hooks/useApi.js'
 import { useState, useEffect } from 'react'
 
 function InfoContainer(props) {
-  const { title, details, link, button } = props
+  const { title, details, link, button, reload } = props
   const [edit, toggleEdit] = useToggle(false)
-  // const [update, setUpdate] = useState({})
-  // const [key, setKey] = useState('')
-  // const [value, setValue] = useState('')
-  const update = {}
+  const [message, setMessage] = useState('')
   const { data, error, isLoading, getData } = useApi();
+  const update = {}
 
   function handleInput(e) {
     const key = e.target.name
@@ -27,12 +25,17 @@ function InfoContainer(props) {
       method: 'PATCH',
       body: update,
     }
-    console.log(petition)
     getData(petition)
   }
 
   useEffect(() => {
     console.log(data)
+    if (typeof data === 'object' && !data.msg) {
+      reload()
+    }
+    if (typeof data === 'object') {
+      setMessage(data.msg)
+    }
   }, [data])
 
   
@@ -43,33 +46,37 @@ function InfoContainer(props) {
       <>
         <StyledTitleBar key={`${title} bar`}>
           <p className='title'>{title}</p>
-          {button && !edit && <button onClick={ toggleEdit }>Editar</button>}
-          {button && edit && <button onClick={ toggleEdit }>x</button>}
+          {button && !edit && !message && <button onClick={ toggleEdit }>Editar</button>}
+          {button && edit && !message && <button onClick={ toggleEdit }>x</button>}
         </StyledTitleBar>
-        <StyledDataSection key={`${title} data section`}>
-        {details && Object.keys(details).map((key) => 
+        {message ? <p>{message}</p> : 
         <>
-          <div key={`${key} div`} className='data'>
-            <p key={`${key} label`} className='key'>{key}</p>
-            {edit ?
-            <input key={`edit ${key} value`}
-            type="text"
-            name={details[key].ref}
-            onKeyUp={ handleInput }
-            placeholder={details[key].value}/>
-            :
-            <p key={`${key} value`} className='value'>{details[key].value}</p>
-            }
-          </div>
-        </>)}
-        </StyledDataSection>
-        {edit && 
-        <>
-          <button onClick={ handleSave }>Guardar</button>
-          <button onClick={ toggleEdit }>Cancelar</button>
+          <StyledDataSection key={`${title} data section`}>
+          {details && Object.keys(details).map((key) => 
+          <>
+            <div key={`${key} div`} className='data'>
+              <p key={`${key} label`} className='key'>{key}</p>
+              {edit ?
+              <input key={`edit ${key} value`}
+              type="text"
+              name={details[key].ref}
+              onChange={ handleInput }
+              placeholder={details[key].value}/>
+              :
+              <p key={`${key} value`} className='value'>{details[key].value}</p>
+              }
+            </div>
+          </>)}
+          </StyledDataSection>
+          {edit && 
+          <>
+            <button className='save' onClick={ handleSave }>Guardar</button>
+            <button className='cancel' onClick={ toggleEdit }>Cancelar</button>
+          </>
+          }
+          {link && <StyledLink>{link}</StyledLink>}
         </>
-        }
-        {link && <StyledLink>{link}</StyledLink>}
+      }
       </>
       }
     </StyledInfoContainer>

@@ -2,7 +2,7 @@ import StyledProfile from './Styled/Profile.js'
 import InfoContainer from '../InfoContainer/InfoContainer.jsx'
 
 function Profile(props) {
-  const { data } = props
+  const { data, reload } = props
   const parsedUserData = [
     {
       title: 'Información Personal',
@@ -48,6 +48,7 @@ function Profile(props) {
       button: false,
     }
   ]
+
   
   return (
     <StyledProfile>
@@ -57,7 +58,8 @@ function Profile(props) {
       title={info.title}
       details={info.details}
       link={info.link}
-      button={info.button} 
+      button={info.button}
+      reload={reload}
       />)
       }
     </StyledProfile>
