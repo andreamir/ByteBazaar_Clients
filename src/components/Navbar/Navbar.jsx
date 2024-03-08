@@ -18,7 +18,7 @@ function Navbar(props) {
 				<button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarOffcanvasLg" aria-controls="navbarOffcanvasLg" aria-label="Toggle navigation">
 						<span className="navbar-toggler-icon"></span>
 				</button>
-				<div className="offcanvas offcanvas-start" tabIndex="-1" id="navbarOffcanvasLg" aria-labelledby="navbarOffcanvasLgLabel">
+				<div className="offcanvas offcanvas-start bg-danger" tabIndex="-1" id="navbarOffcanvasLg" aria-labelledby="navbarOffcanvasLgLabel">
 					<div className='container-fluid'>
 						<div className="offcanvas-body tab" id="navbarNavDropdown">
 							<ul className=" textColorNavLink">
