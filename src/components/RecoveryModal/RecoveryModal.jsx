@@ -1,21 +1,17 @@
-import Modal from '../Modal/Modal';
-import RecoveryForm from '../RecoveryForm/RecoveryForm';
+/**
+ * This file 'forwards' a variant of AuthModal, so we don't break imports that were pointing here.
+ * Onwards, other components that need AuthModal should import it directly, and pass a 'variant' prop
+ */
 
-function RecoveryModal({
-  handleDismiss,
-  toggleLoginModal,
-  toggleRegisterModal,
-}) {
+import AuthModal from '../AuthModal';
+
+export default ({ handleDismiss, toggleLoginModal, toggleRegisterModal }) => {
   return (
-    <Modal handleDismiss={handleDismiss}>
-      <RecoveryForm
-        title="Recovery Form"
-        handleDismiss={handleDismiss}
-        toggleLoginModal={toggleLoginModal}
-        toggleRegisterModal={toggleRegisterModal}
-      />
-    </Modal>
+    <AuthModal
+      variant="recovery"
+      handleDismiss={handleDismiss}
+      openSecondary={toggleLoginModal}
+      openTertiary={toggleRegisterModal}
+    />
   );
-}
-
-export default RecoveryModal;
+};

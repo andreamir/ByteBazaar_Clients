@@ -1,0 +1,52 @@
+.mb-base {
+  margin-bottom: 16px;
+}
+
+.register-form-p {
+  margin: 0;
+
+  /* .cx-auth-modal .auth-modal-content p */
+  color: #0d0d0d;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.register-form-a {
+  background-color: transparent;
+  cursor: pointer;
+  color: #0d0d0d;
+  text-decoration: underline;
+}
+
+.register-form-button {
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+  overflow: visible;
+
+  padding: 0;
+  text-transform: none;
+}
+
+.register-form-input {
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+  overflow: visible;
+}
+
+.register-form-type-checkbox {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.mb-m {
+  margin-bottom: 24px;
+}
+
+/* TODO PARA LOS HIJOS DE FormGroupRow */
+/* .form-group-row > div:nth-child(2n + 1) {
+  padding-right: 8px;
+} */

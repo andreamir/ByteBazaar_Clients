@@ -12,11 +12,9 @@ function Account() {
     getData(petition)
   }, [])
 
-
   return(
     <>
       {data && <Profile data={data}></Profile>}
-      {data && <p>{data.firstName}</p>}
       {error && <p>{error.msg}</p>}
       {isLoading && <p>Loading</p>}
     </>

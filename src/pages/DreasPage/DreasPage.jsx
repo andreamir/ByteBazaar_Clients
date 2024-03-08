@@ -1,4 +1,4 @@
-import Sidebar from "../../components/Sidebar/Sidebar";
+import Sidebar from "../../components/Sidebar/Sidebar.jsx";
 import data from '../../data/twelveProducts.js';
 import GameCard from '../../components/GameCard/GameCard.jsx';
 
@@ -12,7 +12,7 @@ function DreasPage() {
       <div className="container" style={{ marginBottom: "100px" }}> 
         <div className="row">
           <div className="col-md-3">
-            <Sidebar title={title}/>
+            <Sidebar/>
           </div>
           <div className="col-md-9">
             <div className="row">
