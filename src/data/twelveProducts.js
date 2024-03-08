@@ -10,7 +10,8 @@ export default {
         "name": "XBoxSeries"
       },
       "stock": 5,
-      "price": 50
+      "price": 50,
+      "genre": "Puzzle",
     },
     {
       "_id": "65b15a1d88e7a12afad2a629",
@@ -22,7 +23,8 @@ export default {
         "name": "PC"
       },
       "stock": 5,
-      "price": 50
+      "price": 50,
+      "genre": "Graphic Adventure"
     },
     {
       "_id": "65b15a1d88e7a12afad2a62d",
@@ -34,7 +36,8 @@ export default {
         "name": "NintendoSwitch"
       },
       "stock": 5,
-      "price": 50
+      "price": 50,
+      "genre": "Adventure"
     },
     {
       "_id": "65b15a1d88e7a12afad2a62a",
@@ -46,7 +49,8 @@ export default {
         "name": "XBoxOne"
       },
       "stock": 5,
-      "price": 50
+      "price": 50,
+      "genre": "Puzzle"
     },
     {
       "_id": "65b15a1d88e7a12afad2a628",
@@ -58,7 +62,8 @@ export default {
         "name": "PlayStation4"
       },
       "stock": 5,
-      "price": 50
+      "price": 50,
+      "genre": "Graphic Adventure"
     },
     {
       "_id": "65b15a1d88e7a12afad2a62f",
@@ -70,7 +75,8 @@ export default {
         "name": "PC"
       },
       "stock": 5,
-      "price": 50
+      "price": 50,
+      "genre": "Adventure"
     },
     {
       "_id": "65b15a1d88e7a12afad2a633",
@@ -82,7 +88,8 @@ export default {
         "name": "PC"
       },
       "stock": 5,
-      "price": 50
+      "price": 50,
+      "genre": "Sandbox"
     },
     {
       "_id": "65b15a1d88e7a12afad2a635",
@@ -94,7 +101,8 @@ export default {
         "name": "PlayStation5"
       },
       "stock": 5,
-      "price": 50
+      "price": 50,
+      "genre": "Sandbox"
     },
     {
       "_id": "65b15a1d88e7a12afad2a62e",
@@ -106,7 +114,8 @@ export default {
         "name": "PC"
       },
       "stock": 5,
-      "price": 50
+      "price": 50,
+      "genre": "Sandbox"
     },
     {
       "_id": "65b15a1d88e7a12afad2a625",
@@ -118,7 +127,8 @@ export default {
         "name": "PlayStation4"
       },
       "stock": 5,
-      "price": 50
+      "price": 50,
+      "genre": "Stealth"
     },
     {
       "_id": "65b15a1d88e7a12afad2a62c",
@@ -130,7 +140,8 @@ export default {
         "name": "PC"
       },
       "stock": 5,
-      "price": 50
+      "price": 50,
+      "genre": "Action"
     },
     {
       "_id": "65b15a1d88e7a12afad2a626",
@@ -142,7 +153,8 @@ export default {
         "name": "PlayStation4"
       },
       "stock": 5,
-      "price": 50
+      "price": 50,
+      "genre": "Stealth"
     }
   ]
 };
