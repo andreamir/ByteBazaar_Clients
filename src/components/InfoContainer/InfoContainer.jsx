@@ -9,7 +9,7 @@ import { useState, useEffect } from 'react'
 import { X as Close } from 'react-feather'
 
 function InfoContainer(props) {
-  const { title, details, link, button, reload } = props
+  const { title, details, link, fields, button, reload } = props
   const { data, error, isLoading, getData } = useApi();
   const [edit, toggleEdit] = useToggle(false)
   const [message, setMessage] = useState('')
@@ -72,23 +72,18 @@ function InfoContainer(props) {
               }
             </div>
           )}
-          {edit && link &&
+          {edit && link && fields &&
           <div key='password div' className='data'>
-            <p key='password key' className='key'>Introduce tu vieja contraseña</p>
-            <Password
-            name='password'
-            placeholder='Introduce tu vieja contraseña'
-            handleInput={handleInput}/>
-            <p key='newPassword key' className='key'>Introduce tu nueva contraseña aquí</p>
-            <Password
-            name='newPassword'
-            placeholder='Introduce tu nueva contraseña'
-            handleInput={handleInput}/>
-            <p key='repeatedNewPassword key' className='key'>Confirma tu nueva contraseña</p>
-            <Password
-            name='repeatedNewPassword'
-            placeholder='Confirma tu nueva contraseña'
-            handleInput={handleInput}/>
+            {fields.map((field) => 
+              <>
+                <p key={`${field.ref} key`} className='key'>{field.value}</p>
+                <Password
+                key={field.ref}
+                name={field.ref}
+                placeholder={field.value}
+                handleInput={handleInput}/>
+             </>
+            )}
           </div>
           }
           </StyledDataSection>

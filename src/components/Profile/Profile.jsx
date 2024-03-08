@@ -31,6 +31,20 @@ function Profile(props) {
     {
       title: 'Contraseña',
       link: 'Restablecer contraseña',
+      fields: [
+        {
+          value: 'Introduce tu vieja contraseña',
+          ref: 'password',
+        },
+        {
+          value: 'Introduce tu nueva contraseña',
+          ref: 'newPassword',
+        },
+        {
+          value: 'Confirma tu nueva contraseña',
+          ref: 'repeatedNewPassword',
+        },
+      ],
       button: false,
     },
     {
@@ -59,6 +73,7 @@ function Profile(props) {
       details={info.details}
       link={info.link}
       button={info.button}
+      fields={info.fields}
       reload={reload}
       />)
       }
