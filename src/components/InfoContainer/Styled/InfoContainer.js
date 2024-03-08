@@ -5,13 +5,6 @@ const InfoContainer = styled.div`
   border: 1px solid #b3b3b3;
   border-radius: 16px;
   padding: 24px 16px;
-  & input {
-    border-radius: 24px;
-    background: #f9f9f9;
-    border: 1px solid #f2f2f2;
-    letter-spacing: -.3px;
-    padding: 12px;
-  }
   & .save, .cancel {
     border: 1px solid transparent;
     border-radius: 200px;
@@ -43,6 +36,15 @@ const InfoContainer = styled.div`
     background-color: #fff;
     border: 1px solid #1a1a1a;
     color: #1a1a1a;
+  }
+  & .error {
+    color: #bb1313;
+    display: block;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    margin-top: 24px;
+    margin-bottom: 0px;
   }
 `
 

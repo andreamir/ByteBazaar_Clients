@@ -2,12 +2,14 @@ import { styled } from 'styled-components'
 
 const TitleBar = styled.div`
   display: flex;
-  align-items: center;
+  align-content: center;
   justify-content: space-between;
+  margin-bottom: 1rem;
   & .title {
     font-size: 20px;
     font-weight: 600;
     line-height: 24px;
+    margin: 0;
   }
   & button {
     background-color: #1a1a1a;
@@ -32,6 +34,9 @@ const TitleBar = styled.div`
     transition-property: all;
     transition-timing-function: cubic-bezier(.78,.13,.15,.86);
     white-space: nowrap;
+  }
+  & i {
+    cursor: pointer;
   }
 `
 

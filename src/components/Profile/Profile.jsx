@@ -41,7 +41,7 @@ function Profile(props) {
           ref: 'credit',
         },
         puntos: {
-          value: data.points,
+          value: data.points || 0,
           ref: 'points',
         },
       },
