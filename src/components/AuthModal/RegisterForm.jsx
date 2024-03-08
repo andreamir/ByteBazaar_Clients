@@ -1,87 +1,158 @@
-/**
- * TODO: Discuss where should we put low-level components
- * This component is usin several common components with LoginForm
- */
-
+import React from 'react';
 import styles from './Dialogs.module.css';
+import { useToggle } from '@uidotdev/usehooks';
 import FormContainer from './styled/FormContainer';
 import FormHead from './styled/FormHead';
 import * as Form from '@radix-ui/react-form';
-import FormBody from './styled/FormBody';
-import Footer from './styled/Footer';
-import ButtonContainer from './styled/ButtonContainer';
 import Button from './styled/Button';
-import ToLogin from './styled/ToLogin';
+import SwitchModal from './styled/SwitchModal';
 import FormCheck from './styled/FormCheck';
 import FormGroupRow from './styled/FormGroupRow';
-import EmailInput from './styled/EmailInput';
-import PasswordInput from './styled/PasswordInput'; // TODO: Use props to define stuff inside, the name is repeating
-import TextInput from './styled/TextInput';
+import Input from './styled/Input';
+import FlashError from './styled/FlashError';
 
 function RegisterForm({ title, handleDismiss, toggleShowLoginModal }) {
+  const [formValues, setFormValues] = React.useState(() => ({
+    name: '', surname: '', email: '', password: '',
+    passwordConfirmation: '', phone: '',
+  }));
+  // console.log(formValues);
+  const [showNotImplemented, toggleShowNotImplementes] = useToggle(false);
+  const [invalidTherms, toggleInvalidTherms] = useToggle(false);
+
+  function handleChange(e) {
+    setFormValues({ ...formValues, [e.target.name]: e.target.value });
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    toggleShowNotImplementes();
+    setFormValues({
+      name: '', surname: '', email: '', password: '',
+      passwordConfirmation: '', phone: '',
+    });
+  }
+
   return (
     <FormContainer title={title}>
       <FormHead handleDismiss={handleDismiss}>
         Regístrate con ByteBazaar
       </FormHead>
-      <Form.Root>
-        <FormBody>
-          <ToLogin handleDismiss={handleDismiss} toggleShowLoginModal={toggleShowLoginModal} />
+      <Form.Root onSubmit={handleSubmit}>
 
-          {/* MAIN INPUTS */}
-          <FormGroupRow>
-            <div className={styles["form-group-row-elements"]}>
-              <TextInput title="Nombre" type="text" name="Nombre" placeholder="Nombre" />
-            </div>
-            <div className={styles["form-group-row-elements"]}>
-              <TextInput title="Apellido" type="text" name="Apellido" placeholder="Apellido" />
-            </div>
-            <div className={styles["form-group-row-elements"]}>
-              <EmailInput />
-            </div>
-            <div className={styles["form-group-row-elements"]}>
-              <PasswordInput title="Contraseña" />
-            </div>
-            <div className={styles["form-group-row-elements"]}>
-              <PasswordInput title="Confirmar contraseña" />
-            </div>
-            <div className={styles["form-group-row-elements"]}>
-              <TextInput title="Teléfono de contacto (opcional)" type="text" name="phone" placeholder="Teléfono de contacto" />
-            </div>
-          </FormGroupRow>
+        {showNotImplemented && <FlashError variant={'notImplemented'} />}
 
-          {/* CHECKBOXES */}
-          <div className={styles['mb-base']}>
-            <FormCheck>Mantenerme informado por correo electrónico</FormCheck>
-            <FormCheck>Mantenerme informado por SMS</FormCheck>
-            <FormCheck>
-              <span>Confirmo que tengo 13 años o más y acepto los</span>{' '}
-              <a 
-                className={styles['register-form-a']}
-                href="/"
-                target="blank"
-              >
-                Términos y condiciones
-              </a>{' '}
-              y la{' '}
-              <a 
-                className={styles['register-form-a']}
-                href="/"
-                target="blank"
-              >
-                Política de Privacidad
-              </a>
-            </FormCheck>
-          </div>
-        </FormBody>
-        <Footer>
-          <ButtonContainer>
-            <Button>Crear cuenta</Button>
-          </ButtonContainer>
-        </Footer>
+        {/* Switch to Login Modal */}
+        <SwitchModal
+          description="¿Ya tienes cuenta?"
+          linkText="Inicia sesión aquí"
+          handleSwitch={() => {
+            handleDismiss();
+            toggleShowLoginModal();
+          }}
+        />
+
+        <FormGroupRow>
+          <Input
+            variant="name"
+            type="text"
+            title="Nombre"
+            name="name"
+            placeholder="Nombre"
+            value={formValues.name}
+            setValue={handleChange}
+          />
+
+          <Input
+            variant="surname"
+            type="text"
+            title="Apellido"
+            name="surname"
+            placeholder="Apellido"
+            value={formValues.surname}
+            setValue={handleChange}
+          />
+
+          <Input
+            variant="email"
+            type="email"
+            title="Dirección de email"
+            name="email"
+            placeholder="Dirección de email"
+            value={formValues.email}
+            setValue={handleChange}
+          />
+
+          <Input
+            variant="password"
+            type="password"
+            title="Contraseña"
+            name="password"
+            placeholder="Contraseña"
+            value={formValues.password}
+            setValue={handleChange}
+          />
+
+          <Input
+            variant="passwordConfirmation"
+            mustMatch={formValues.password}
+            type="password"
+            title="Confirmar contraseña"
+            name="passwordConfirmation"
+            placeholder="Confirmar contraseña"
+            value={formValues.passwordConfirmation}
+            setValue={handleChange}
+          />
+
+          <Input
+            variant="phone"
+            type="text"
+            title="Teléfono de contacto (optional)"
+            name="phone"
+            placeholder="Teléfono de contacto"
+            value={formValues.phone}
+            setValue={handleChange}
+          />
+        </FormGroupRow>
+
+        {/* CHECKBOXES */}
+        <div className={styles['mb-base']}>
+          <FormCheck>Mantenerme informado por correo electrónico</FormCheck>
+          <FormCheck>Mantenerme informado por SMS</FormCheck>
+          <FormCheck>
+            <span>Confirmo que tengo 13 años o más y acepto los</span>{' '}
+            <a className={styles['register-form-a']} href="/" target="blank">
+              Términos y condiciones
+            </a>{' '}
+            y la{' '}
+            <a className={styles['register-form-a']} href="/" target="blank">
+              Política de Privacidad
+            </a>
+          </FormCheck>
+        </div>
+
+        <Button type="submit" variant="submit" title="Crear cuenta" />
       </Form.Root>
     </FormContainer>
   );
 }
 
 export default RegisterForm;
+
+/**
+ * Unstyled Radix Components in use... (for reference)
+ * https://www.radix-ui.com/primitives/docs/components/form#form
+ */
+
+/**
+ * TODO: Replace returning tag with Radix unstyled components
+ * EmailInput / PasswordInput -> Form.Field
+ * TextFieldTitle -> Form.Label
+ * Input -> Form.Control with nested input... with asChild attr?
+ * Form.Message ... implement usage for error and other messages
+ * <Form.Message match="valueMissing">Dirección de email</Form.Message>
+ * <Form.Message match="typeMismatch">Por favor ingrese un email válido</Form.Message>
+ * <Form.Submit asChild>
+ *   <button style={{ marginTop: 10 }}>Login</button>
+ * </Form.Submit>
+ */

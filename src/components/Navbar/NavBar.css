@@ -1,17 +1,44 @@
 .backGroundNav{
   background-color: #e20a03;
   border-radius: 5px;
-  margin-bottom: 2em;
+  margin-left: 0.4em;
+  margin-right: 0.4em;
   padding: 100%;
+  color: #FFFFFF;
+  margin-bottom: 3em;
 }
 
 .loginRegister{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 0.6rem;
-  border: none;
-  background-color: none;
   cursor: pointer;
+  margin-right: 0.5em;
 
+}
+
+.navbar-brand.textColor {
+  margin-left: 1em;
+  color: #FFFFFF;
+}
+
+
+.textColorNavLink {
+  color: #FFFFFF;
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: 2em;
+  align-self: center;
+  padding: 0;
+  margin: 0;
+}
+
+.offcanvas-body.tab {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.whiteSpaceDiv{
+  margin-top: 4em;
 }

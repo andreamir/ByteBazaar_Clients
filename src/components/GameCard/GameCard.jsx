@@ -40,7 +40,7 @@ function GameCard(props) {
   return (
     <>
       <StyledGameCard>
-        <StyledThumbnailWrapper onClick={ () => { navigate(`/product/${_id}`) }}>
+        <StyledThumbnailWrapper onClick={ () => { navigate(`/productdetails/${_id}`) }}>
           <StyledThumbnail src={image}/>
         </StyledThumbnailWrapper>
         <StyledDetail>

@@ -1,83 +1,75 @@
+/**
+ * TODO RESEARCH.-
+ * Research 'trancient props' in styled components
+ * If we pass props that are not official html attributes to
+ * a styled component, we get a long warning saying that an
+ * 'unknown' prop is passing through the DOM.
+ * What does this mean?
+ * We can 'fix' this by prepending $ to the prop, making it
+ * a 'transient prop'. Does this fix the problem or just
+ * silence it?
+ */
+
 import { styled } from 'styled-components';
-import ButtonContent from './ButtonContent';
-import ButtonText from './ButtonText';
+import * as Form from '@radix-ui/react-form';
 
-const Button = styled.button`
-  /* button */
-  font-family: inherit;
-  line-height: 1.15;
-  margin: 0;
-  overflow: auto;
-  overflow: visible;
-  font-size: 100%;
-  padding: 0;
-  text-transform: none;
-  appearance: button;
+const COLORS = {
+  submit: {
+    background: '#e20a03',
+    border: '#e20a03',
+    color: '#fff',
+    backgroundHover: '#b50802',
+    colorHover: '#fff',
+    activeBackground: '#e20a03',
+    activeBorder: '#e20a03',
+    activeColor: '#fff',
+  },
+  outline: {
+    background: '#fff',
+    border: '#1a1a1a',
+    color: '#1a1a1a',
+    backgroundHover: '#1a1a1a',
+    colorHover: '#fff',
+    activeBackground: 'fff',
+    activeBorder: '#1a1a1a',
+    activeColor: '#1a1a1a',
+  },
+};
 
-  align-self: center;
-  border-image: none 100% 1 0 stretch;
-  border-radius: 200px;
-  border-style: solid;
-  border-width: 1px;
-  box-sizing: border-box;
+const Button = styled.button.attrs((props) => ({
+  type: props.type,
+  $variant: props.$variant,
+}))`
   cursor: pointer;
-  outline: medium currentcolor;
-  overflow: hidden;
+  border-radius: 200px;
+  display: block;
+  width: 100%;
   position: relative;
-  text-align: center;
-  text-decoration: none currentcolor solid;
-  transition: all 0.8s cubic-bezier(0.78, 0.13, 0.15, 0.86);
   white-space: nowrap;
 
-  /* .cx-btn-md */
   font-size: 14px;
   font-weight: 600;
   line-height: 18px;
   padding: 8.5px 15px;
 
-  /* .cx-btn-block */
-  display: block;
-  width: 100%;
+  /* // TODO: Different transition durations for different attributes! */
+  /* For instance, this duration doesn't work at all when disabling buttons for a brief period of time */
+  transition: all 0.8s cubic-bezier(0.78, 0.13, 0.15, 0.86);
 
-  /* // TODO: This should come in a prop or something configurable */
-  /* .cx-btn-primary */
-  background-color: #e20a03;
-  border-color: #e20a03;
-  color: #fff;
-
-  &:disabled {
-    border-color: #e6e6e6;
-    cursor: default;
-    background-color: #e6e6e6;
-    color: #b3b3b3;
-  }
-
-  &:disabled:hover {
-    background-color: #e6e6e6;
-    color: #b3b3b3;
-  }
-
-  /* .cx-btn-primary */
-  &:active {
-    background-color: #e20a03;
-    border-color: #e20a03;
-    color: #fff;
-  }
-
-  &:focus-visible {
-    outline: 1px dotted buttontext;
-  }
+  background-color:       ${(props) => COLORS[props.$variant].background};
+  border: 1px solid       ${(props) => COLORS[props.$variant].border};
+  color:                  ${(props) => COLORS[props.$variant].color};
+  background-color:       ${(props) => COLORS[props.$variant].background};
 
   @media (min-width: 768px) {
-    /* .cs-btn-md */
     font-size: 16px;
     font-weight: 600;
     line-height: 20px;
     padding: 11px 24px;
 
-    /* .cx-btn-primary */
     &:hover {
-      background-color: #b50802;
+      background-color:    ${(props) => COLORS[props.$variant].backgroundHover};
+      color:               ${(props) => COLORS[props.$variant].colorHover};
     }
 
     &:not(.no-scale):hover {
@@ -85,16 +77,47 @@ const Button = styled.button`
       transform-origin: center center 0;
     }
   }
+
+  &:disabled,
+  &:disabled:hover {
+    cursor: default;
+    background-color: #e6e6e6;
+    border-color: #e6e6e6;
+    color: #b3b3b3;
+  }
+
+  &:active {
+    background-color:       ${(props) => COLORS[props.$variant].activeBackground};
+    border-color:           ${(props) => COLORS[props.$variant].activeBorder};
+    color:                  ${(props) => COLORS[props.$variant].activeColor};
+  }
 `;
 
-function StyledButton({ children }) {
-  return (
-    <Button>
-      <ButtonContent>
-        <ButtonText>{children}</ButtonText>
-      </ButtonContent>
+function StyledButton({ title, type, variant, handleSwitch, disabled }) {
+  if (handleSwitch) {
+    return (
+    <Button
+      type={type}
+      $variant={variant}
+      onClick={handleSwitch}
+      disabled={disabled}
+    >
+      {title}
     </Button>
-  );
+    );
+  } else {
+    return (
+      <Form.Submit asChild>
+        <Button
+          type={type}
+          $variant={variant}
+          disabled={disabled}
+        >
+          {title}
+        </Button>
+      </Form.Submit>
+    );
+  }
 }
 
 export default StyledButton;
