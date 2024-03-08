@@ -28,6 +28,7 @@ function TestPageMarc() {
       <label>Method</label><select ref={methodInput}>
         <option value="GET">GET</option>
         <option value="POST">POST</option>
+        <option value="PATCH">PATCH</option>
       </select>
       <br /><br />
       <label>Body</label><textarea ref={bodyInput} rows="10" cols="50"/>
