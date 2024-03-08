@@ -5,6 +5,7 @@ import SidebarComponent from "./SidebarComponent";
 function Sidebar(){
   const genresHook = useApi();
   const platformsHook = useApi();
+  const { error, isLoading } = useApi()
 
   const [genres, useGenres] = useState();
   const [platforms, usePlatforms] = useState();
@@ -35,7 +36,6 @@ function Sidebar(){
       return
     }
     useGenres( genresHook.data)
-    // console.log('genres in effect:',genres);
   }, [genresHook])
 
   useEffect(() => {
@@ -43,20 +43,12 @@ function Sidebar(){
       return
     }
     usePlatforms(platformsHook.data)
-    // console.log('platforms in effect:',platforms);
   }, [platformsHook])
 
-  const { data, error, isLoading, getData } = useApi()
-  const petition = {
-    route: '/genres/all',
-  }
-  useEffect(() => {
-    getData(petition)
-  }, [])
-
+  
   return(
     <>
-      {data && <SidebarComponent data={data} platformsData={platforms} genresData={genres}></SidebarComponent>}
+      {genres && platforms && <SidebarComponent platformsData={platforms} genresData={genres}></SidebarComponent>}
       {error && <p>{error.msg}</p>}
       {isLoading && <p>Loading</p>}
     </>
