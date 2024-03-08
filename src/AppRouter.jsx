@@ -7,7 +7,7 @@ import GameCardDemo from './pages/GameCardDemo/GameCardDemo.jsx'
 import TestPageJanis from './pages/TestPageJanis/TestPageJanis.jsx'
 import TestPageMarc from './pages/TestPageMarc/TestPageMarc.jsx'
 import Account from './pages/Account/Account.jsx'
-import DreasPage from './pages/DreasPage/DreasPage.jsx'
+import TestPageDrea from './pages/TestPageDrea/TestPageDrea.jsx'
 import SidebarDemo from './pages/SidebarDemo/SidebarDemo.jsx'
 
 function AppRouter(){
@@ -45,7 +45,7 @@ function AppRouter(){
       path: '/productdetails/:id'
     },
     {
-      element: <DreasPage/>,
+      element: <TestPageDrea/>,
       path: '/drea'
     },
     {
