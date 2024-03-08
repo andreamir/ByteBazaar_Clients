@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import StyledSidebar from './StyledSidebar';
 
 function SidebarComponent(props) {
@@ -32,10 +32,13 @@ function SidebarComponent(props) {
     } else {
       setChecked([...checked, option]);
     }
-    console.log('Option checked', checked);
   }
 
+  useEffect(() => {
+    console.log('Option checked', checked);
+  }, [checked]); 
   const filters = getFilters();
+  
 
   return (
     <StyledSidebar>
