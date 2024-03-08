@@ -1,12 +1,14 @@
 import './demo.css'
-import Carousel from '../../components/Carousel/Carousel.jsx'
-import data from '../../data/twelveProducts.js'
+import Banner from '../../components/Banner/Banner.jsx'
+// import Carousel from '../../components/Carousel/Carousel.jsx'
+// import data from '../../data/twelveProducts.js'
 
 function CarouselDemo() {
   return (
     <>
       <div className="containerDiv">
-        <Carousel data={data.products}/>
+        <Banner></Banner>
+        {/* <Carousel data={data.products}/> */}
       </div>
     </>
   )
