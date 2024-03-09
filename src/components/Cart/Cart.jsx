@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useShoppingListContext } from '../../contexts/ShoppingListContext.jsx'
 import { Popover, PopoverHeader, PopoverBody } from 'reactstrap';
+import useBuy from '../../hooks/useBuy.js';
 import CartList from '../CartList/CartList.jsx'
 import StyledBasket from '../GameCard/Styled/Basket.js'
 import imagen from '../GameCard/img/basket.png'
@@ -10,6 +11,7 @@ function Cart(props){
     const { cartList } = useShoppingListContext() 
     const [popoverOpen, setPopoverOpen] = useState(false);
     const [closeTimer, setCloseTimer] = useState(null);
+		const { buy } = useBuy();
 
     const togglePopover = () => setPopoverOpen(!popoverOpen);
     const closePopover = () => {
@@ -30,6 +32,12 @@ function Cart(props){
 			return tot + element.qty
 		}, 0)
 
+		 function buyButtonHandler(){
+			console.log('handler');
+			 buy();
+
+		}
+
     return (
 			<>
 				<div id='cart' onMouseEnter={togglePopover} onMouseLeave={closePopover}>
@@ -45,6 +53,9 @@ function Cart(props){
 							<PopoverHeader className='cartHeader'> CART </PopoverHeader>
 							<PopoverBody>
 									<CartList/>
+									<button onClick={buyButtonHandler}>
+										Buy
+									</button>
 							</PopoverBody>
 					</Popover>
 				}				
