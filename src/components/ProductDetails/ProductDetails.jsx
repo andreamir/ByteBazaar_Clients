@@ -5,9 +5,18 @@ import play4Url from '../../assets/platforms/PlayStation4.png'
 import play5Url from '../../assets/platforms/PlayStation5.png'
 import wiiUrl from '../../assets/platforms/wii.png'
 import xboxUrl from '../../assets/platforms/xbox.png'
+import { useShoppingListContext } from '../../contexts/ShoppingListContext'
 
 function ProductDetail(props) {
   const { title, image, description, price, stock, platform, genres } = props
+
+  //ADD TO CART BUTTON
+  const { addGame } = useShoppingListContext();
+  function addToCart(){
+    console.log('props from addToCart: ', props);
+    addGame(props);
+  }
+
   let overlayUrl = ''
 
   switch (platform) {
@@ -76,7 +85,7 @@ function ProductDetail(props) {
 
             <div className="d-grid gap-2 d-md-flex justify-content-md-between">
               <p>Stock: {stock}</p>
-              <a className="btn btn-primary w-lg-100 px-4 me-md-2" href="#" role="button">Add to Cart</a>
+              <a className="btn btn-primary w-lg-100 px-4 me-md-2" onClick={addToCart} role="button">Add to Cart</a>
             </div>
           </div>
         </div>

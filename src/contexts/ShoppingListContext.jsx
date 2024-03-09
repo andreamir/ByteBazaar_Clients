@@ -10,7 +10,7 @@ function ShoppingListProvider(props) {
 
   function addGame(game) {
     const ids = tabGames.map(tabGame => tabGame._id)
-    setTabGames([...tabGames, game]);
+    setTabGames([...tabGames,{ ...game, _id: `${game}TabGame`}]);
   }
   function substractGame(game) {
     let firstOcurrence = false;

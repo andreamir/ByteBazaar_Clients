@@ -11,11 +11,13 @@ function CartList(params) {
       {cartList.map((cartElement,index) => 
         <li key = {`item${index}`}className="list-group-item">
           <div className='listContainer'>
-            <img src={cartElement.gameObj.gameTitle_id.image} alt={cartElement.gameObj.title} height={70} width={40}/> 
+            {/* <img src={cartElement.gameObj.gameTitle_id.image} alt={cartElement.gameObj.title} height={70} width={40}/>  */}
+            <img src={cartElement.gameObj.image} alt={cartElement.gameObj.title} height={70} width={40}/>
+
             <div style={{width: '80%'}}>
-                <b>{cartElement.gameObj.gameTitle_id.title}</b> <br/>
-                {cartElement.gameObj.platform_id.name} <br/>
-                Price: {cartElement.gameObj.price} <br />
+                <b>{cartElement.gameObj.title}</b> <br/>
+                {cartElement.gameObj.platform} <br/>
+                Price: {cartElement.price} <br />
                 Quantity: {cartElement.qty}
                 <div className='info'>
                   <div className='buttonSvg' onClick={()=> substractGame(cartElement.gameObj)}>
