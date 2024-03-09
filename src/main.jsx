@@ -6,6 +6,7 @@ import Navbar from './components/Navbar/Navbar.jsx'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './index.css'
 import Footer from './components/Footer/Footer.jsx'
+import { FiltersProvider } from './contexts/FiltersContext.jsx'
 
 const logoSource = ''
 const title = 'BYTEBAZAAR'
@@ -16,7 +17,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 			<BrowserRouter>
 				<ShoppingListProvider>
 					<Navbar key='navbar' title = {title} logo= {logoSource} elements = {tabElements}/>
-					<AppRouter/>
+					<FiltersProvider>
+						<AppRouter/>
+					</FiltersProvider>
 				</ShoppingListProvider>
 			</BrowserRouter>
 			<Footer/>

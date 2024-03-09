@@ -1,11 +1,14 @@
 import { useState, useEffect } from 'react';
 import StyledSidebar from './StyledSidebar';
+import { useFiltersContext } from '../../contexts/FiltersContext';
 
 function SidebarComponent(props) {
   const genresData = props.genresData;
   const platformsData = props.platformsData;
   const gamesData = props;
-  console.log('gamesData',gamesData);
+  const { handleCheckbox } = useFiltersContext();
+
+  // console.log('gamesData',gamesData);
   const [expandedIndexes, setExpandedIndexes] = useState([]);
   const [checkedPlatforms, setCheckedPlatforms] = useState([]);
   const [checkedGenres, setCheckedGenres] = useState([]);
@@ -16,9 +19,9 @@ function SidebarComponent(props) {
   function getFilters() {
 
     const genreOptions = genresData.map(genres => genres.name);
-    console.log('genreOptions',genreOptions);
+    // console.log('genreOptions',genreOptions);
     const platformsOptions = platformsData.map(platforms => platforms.name);
-    console.log('platformsOptions',platformsOptions);
+    // console.log('platformsOptions',platformsOptions);
     const filters = [{title: 'Platforms', options: platformsOptions}, { title: 'Genres', options: genreOptions}, ];
     return filters;
   }
@@ -32,18 +35,19 @@ function SidebarComponent(props) {
     }
   }
   
-  //WIP
-  function handleCheckbox(option,index) {
-    if (checked.includes(option)) {
-      setChecked(checked.filter((checked) => checked !== option));
-    } else {
-      setChecked([...checked, option]);
-    }
-  }
+  // //WIP
+  // function handleCheckbox(option,index) {
+  //   if (checked.includes(option)) {
+  //     setChecked(checked.filter((checked) => checked !== option));
+  //   } else {
+  //     setChecked([...checked, option]);
+  //   }
+  // }
 
-  useEffect(() => {
-    console.log('Filter checked', checked);
-  }, [checked]); 
+  // useEffect(() => {
+  //   console.log('Filter checked', checked);
+  // }, [checked]); 
+  
   const filters = getFilters();
   
 

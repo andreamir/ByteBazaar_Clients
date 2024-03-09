@@ -25,7 +25,7 @@ function useApi() {
     })
     if (response.ok) {
       const responseAsJson = await response.json()
-      console.log(responseAsJson);
+      // console.log(responseAsJson);
       if (responseAsJson.token) {
         localStorage.token = responseAsJson.token
         localStorage.user = responseAsJson.user
