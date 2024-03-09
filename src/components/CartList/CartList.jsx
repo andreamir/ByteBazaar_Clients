@@ -8,7 +8,15 @@ function CartList(params) {
   return(
     <>
       <ul className="list-group scroll">
-      {cartList.map((cartElement,index) => 
+      
+      { cartList.length === 0 &&
+          <li key = {`noItemCart`}className="list-group-item">
+          <div className='listContainer'>
+            No items added to cart
+          </div>
+        </li>}
+      {cartList.length !== 0 &&
+        cartList.map((cartElement,index) => 
         <li key = {`item${index}`}className="list-group-item">
           <div className='listContainer'>
             <img src={cartElement.gameObj.gameTitle_id.image} alt={cartElement.gameObj.title} height={70} width={40}/> 
@@ -32,7 +40,8 @@ function CartList(params) {
               </div>
             </div>
           </div>
-        </li>)}
+        </li>)
+      }
         <li key ='total' className="list-group-item">
           <div className='total'>
             <div>
