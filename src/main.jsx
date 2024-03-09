@@ -10,7 +10,7 @@ import { FiltersProvider } from './contexts/FiltersContext.jsx'
 
 const logoSource = ''
 // const title = 'BYTEBAZAAR'
-const title = {name: 'BYTEBAZAAR', path: '/'}
+const title = {name: 'BYTEbazaar', path: '/'}
 const tabElements = [
 	{title: 'Home', path: '/'} ,
 	// {title: 'My account', path: ''}
