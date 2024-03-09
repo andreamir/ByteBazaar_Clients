@@ -4,28 +4,26 @@ const FiltersContext = createContext();
 
 function FiltersProvider(props) {
   const { children } = props;
-  const [filteredGames, setFilteredGame] = useState([]);
-  const [checked, setChecked] = useState([]);
+  // const [filteredGames, setFilteredGame] = useState([]);
+  const [checkedFilters, setcheckedFilters] = useState([]);
 
   function handleCheckbox(option) {
-    if (checked.includes(option)) {
-      setChecked(checked.filter((checkedOption) => checkedOption !== option));
+    if (checkedFilters.includes(option)) {
+      setcheckedFilters(checkedFilters.filter((checkedFiltersOption) => checkedFiltersOption !== option));
     } else {
-      setChecked([...checked, option]);
+      setcheckedFilters([...checkedFilters, option]);
     }
   }
 
   useEffect(() => {
-    console.log('Filter checked', checked);
-  }, [checked]);
+    console.log('Filter checkedFilters', checkedFilters);
+  }, [checkedFilters]);
 
-  function useFilters(game) {
-    // Aquí puedes implementar la lógica de filtrado según tus necesidades
-    // Por ejemplo, puedes aplicar filtros basados en el estado de "checked"
-  }
+  // function useFilters(game) {
+  // }
 
   return (
-    <FiltersContext.Provider value={{ useFilters, handleCheckbox }}>
+    <FiltersContext.Provider value={{ checkedFilters, handleCheckbox }}>
       {children}
     </FiltersContext.Provider>
   );
