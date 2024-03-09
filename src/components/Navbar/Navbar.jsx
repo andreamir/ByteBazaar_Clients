@@ -3,7 +3,7 @@ import LoginModal from '../../components/LoginModal/LoginModal';
 import RegisterModal from '../../components/RegisterModal/RegisterModal';
 import RecoveryModal from '../../components/RecoveryModal/RecoveryModal';
 import useToggle from '../../hooks/use-toggle.hook';
-// import './NavBar.css'
+import './NavBar.css'
 
 
 function Navbar(props) {
