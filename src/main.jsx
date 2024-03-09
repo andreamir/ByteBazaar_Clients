@@ -10,7 +10,10 @@ import { FiltersProvider } from './contexts/FiltersContext.jsx'
 
 const logoSource = ''
 const title = 'BYTEBAZAAR'
-const tabElements = [{title: 'Home', path: './gameCardDemo'} , {title: 'My account', path: ''} ]
+const tabElements = [
+	{title: 'Home', path: '/'} ,
+	// {title: 'My account', path: ''}
+]
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <>
