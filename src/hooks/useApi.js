@@ -1,6 +1,8 @@
 import { useState } from 'react'
 
 const endpoint = 'https://bytebazaar.onrender.com'
+// const endpoint = 'http://localhost:3003'
+
 
 function useApi() {
   const [data, setData] = useState()
@@ -23,6 +25,7 @@ function useApi() {
     })
     if (response.ok) {
       const responseAsJson = await response.json()
+      console.log(responseAsJson);
       if (responseAsJson.token) {
         localStorage.token = responseAsJson.token
         localStorage.user = responseAsJson.user
