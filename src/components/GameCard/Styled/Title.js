@@ -1,7 +1,7 @@
 import { styled } from 'styled-components';
 
 const Title = styled.div`
-  font-weight: 700;
+  font-weight: 600;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

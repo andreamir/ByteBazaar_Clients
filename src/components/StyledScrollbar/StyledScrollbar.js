@@ -3,7 +3,7 @@ import { styled } from 'styled-components'
 const Scrollbar = styled.div`
   overflow-x: scroll;
   overflow-y: hidden;
-  background-color: #ECECEC;
+  background-color: inherit;
   height: 450px;
   width: 100%;
   display: flex;
