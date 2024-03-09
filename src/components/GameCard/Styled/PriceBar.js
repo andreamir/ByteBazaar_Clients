@@ -2,7 +2,7 @@ import { styled } from 'styled-components';
 
 const PriceBar = styled.div`
   font-size: 20px;
-  font-weight: 700;
+  font-weight: 600;
   display: flex;
   justify-content: space-between;
   align-items: center;

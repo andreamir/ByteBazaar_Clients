@@ -7,6 +7,7 @@ const Detail = styled.div`
   flex-direction: column;
   justify-content: center;
   position: relative;
+  font-family: Poppins, sans-serif;
 `
 
 export default Detail
