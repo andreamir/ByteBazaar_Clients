@@ -27,7 +27,9 @@ function Carousel(props) {
     scrollbarRef.current.addEventListener('scroll', handleScroll)
     const maxScroll = Math.floor(scrollbarRef.current.scrollWidth-scrollbarRef.current.clientWidth)
     setMaxScrollWidth(maxScroll)
-  }, [])
+    console.log('scrollWidth', scrollWidth)
+    console.log('maxScrollWidth', maxScrollWidth)
+  }, [data])
 
   const gap = 20;
 

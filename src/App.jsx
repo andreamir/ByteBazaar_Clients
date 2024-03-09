@@ -4,7 +4,6 @@ import StyledContent from './components/Styled/Content.js'
 import Banner from './components/Banner/Banner.jsx'
 import imageBank from './components/Banner/imageBank/imageBank.js'
 import Carousel from './components/Carousel/Carousel.jsx'
-import games from './data/twelveProducts.js'
 import useApi from './hooks/useApi.js'
 import { useEffect, useState } from 'react'
 
@@ -20,7 +19,6 @@ function App() {
   }, [])
 
   useEffect(() => {
-    console.log(products)
     if (typeof data === 'object') {
       setProducts(data.products)
     }
