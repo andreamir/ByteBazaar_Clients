@@ -3,8 +3,8 @@ import LoginModal from '../../components/LoginModal/LoginModal';
 import RegisterModal from '../../components/RegisterModal/RegisterModal';
 import RecoveryModal from '../../components/RecoveryModal/RecoveryModal';
 import useToggle from '../../hooks/use-toggle.hook';
-import './NavBar.css'
- 
+import styles from './NavBar.module.css';
+
 
 function Navbar(props) {
     const [showLoginModal, toggleShowLoginModal] = useToggle(false);
@@ -13,15 +13,15 @@ function Navbar(props) {
     const {elements, title, logo} = props;
     return (
 		<>
-			<nav key='navBar' className="navbar navbar-expand-lg fixed-top backGroundNav">
+			<nav key='navBar' className={`navbar navbar-expand-lg fixed-top  ${styles.backGroundNav}`}>
 				<a className="navbar-brand textColor" href="#">{title}</a>
 				<button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarOffcanvasLg" aria-controls="navbarOffcanvasLg" aria-label="Toggle navigation">
 						<span className="navbar-toggler-icon"></span>
 				</button>
-				<div className="offcanvas offcanvas-start" tabIndex="-1" id="navbarOffcanvasLg" aria-labelledby="navbarOffcanvasLgLabel">
+				<div className="offcanvas offcanvas-start bg-danger" tabIndex="-1" id="navbarOffcanvasLg" aria-labelledby="navbarOffcanvasLgLabel">
 					<div className='container-fluid'>
-						<div className="offcanvas-body tab" id="navbarNavDropdown">
-							<ul className=" textColorNavLink">
+						<div className={styles['offcanvas-body']} id="navbarNavDropdown">
+							<ul className={styles.textColorNavLink}>
 								{elements.map(tab => 
                 
 									<li key={tab.title} className="nav-item">
@@ -33,7 +33,7 @@ function Navbar(props) {
 						</div>
 					</div>
 				</div>
-        <div className='loginRegister' onClick={toggleShowLoginModal}>
+        <div className={styles.loginRegister} onClick={toggleShowLoginModal}>
         <svg width="28" height="28" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
             <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
           </svg>
@@ -65,7 +65,7 @@ function Navbar(props) {
         )}
 				<Cart/> 
 			</nav>
-      <div className='whiteSpaceDiv'/>
+      <div className={styles.whiteSpaceDiv}/>
 		</>
   )
 }

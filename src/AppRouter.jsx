@@ -7,8 +7,10 @@ import GameCardDemo from './pages/GameCardDemo/GameCardDemo.jsx'
 import TestPageJanis from './pages/TestPageJanis/TestPageJanis.jsx'
 import TestPageMarc from './pages/TestPageMarc/TestPageMarc.jsx'
 import Account from './pages/Account/Account.jsx'
+import TestPageDrea from './pages/TestPageDrea/TestPageDrea.jsx'
+import SidebarDemo from './pages/SidebarDemo/SidebarDemo.jsx'
 
-function AppRouter() {
+function AppRouter(){
   return useRoutes([
     {
       element: <App />,
@@ -41,6 +43,14 @@ function AppRouter() {
     {
       element: <ProductDetails />,
       path: '/productdetails/:id'
+    },
+    {
+      element: <TestPageDrea/>,
+      path: '/drea'
+    },
+    {
+      element: <SidebarDemo />,
+      path: '/SidebarDemo'
     },
   ]);
 }
