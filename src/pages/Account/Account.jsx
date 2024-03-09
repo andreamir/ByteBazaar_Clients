@@ -1,6 +1,7 @@
 import useApi from "../../hooks/useApi"
 import { useEffect } from 'react'
 import Profile from '../../components/Profile/Profile.jsx'
+import StyledBody from '../../components/Styled/Body.js'
 
 function Account() {
   const { data, error, isLoading, getData } = useApi()
@@ -18,9 +19,11 @@ function Account() {
 
   return(
     <>
-      {data && <Profile reload={reloadData} data={data}></Profile>}
-      {error && <p>{error.msg}</p>}
-      {isLoading && <p>Loading</p>}
+      <StyledBody>
+        {data && <Profile reload={reloadData} data={data}></Profile>}
+        {error && <p>{error.msg}</p>}
+        {isLoading && <p>Loading</p>}
+      </StyledBody>
     </>
   )
 }
