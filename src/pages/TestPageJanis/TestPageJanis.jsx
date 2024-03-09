@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom'
-import ProductDetails from '../../components/ProductDetails/ProductDetails.jsx'
+import ProductDetail from '../../components/ProductDetails/ProductDetails.jsx'
 import ShowToast from '../../components/Toast/Toast.jsx'
 import useApi from '../../hooks/useApi.js'
 import { useEffect, useState } from 'react'
@@ -69,7 +69,7 @@ function TestPageJanis() {
     <>
       <div className='productDetails>'>
       {!errorToast && (
-        <ProductDetails
+        <ProductDetail
           title={title}
           image={image}
           description={description}
