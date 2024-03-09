@@ -7,8 +7,9 @@ const BannerWrap = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
-  height: ${ props => `${props.height};` || '170px;'}
-  margin-bottom: 24px;
+  height: ${ props => props.height || '170px;'};
+  // margin-bottom: 24px;
+  cursor: pointer;
 `
 
 function Banner(props) {

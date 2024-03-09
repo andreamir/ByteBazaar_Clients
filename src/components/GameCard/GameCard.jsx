@@ -9,6 +9,7 @@ import StyledPriceBar from './Styled/PriceBar.js'
 import StyledAddToCart from './Styled/AddToCart.js'
 import StyledBasket from './Styled/Basket.js'
 import { useShoppingListContext } from '../../contexts/ShoppingListContext.jsx'
+import basket from './img/basket.png'
 
 const StyledGameCard = styled.div`
   height: 380px;
@@ -49,7 +50,7 @@ function GameCard(props) {
           <StyledPriceBar>
             {`${price.toFixed(2)}€`}
             <StyledAddToCart onClick={() => addGame(product)}>
-              <StyledBasket src='src/components/GameCard/img/basket.png'/>
+              <StyledBasket src={basket}/>
             </StyledAddToCart>
           </StyledPriceBar>
         </StyledDetail>

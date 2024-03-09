@@ -43,7 +43,7 @@ function Carousel(props) {
 
   return(
     <StyledCarousel>
-      <StyledTrackButton onClick={backClickHandler} $hide={scrollWidth === 0} $left={true}>◀️</StyledTrackButton>
+      <StyledTrackButton onClick={backClickHandler} $hide={scrollWidth === 0} $left={true}>◀︎</StyledTrackButton>
       <StyledScrollbar  ref={scrollbarRef} $gap={`${gap}px`}>
         {data.map((product, index) => <GameCard key={product._id} data={data[index]}></GameCard>)}
       </StyledScrollbar>
