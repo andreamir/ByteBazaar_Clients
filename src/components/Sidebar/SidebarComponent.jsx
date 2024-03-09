@@ -4,8 +4,10 @@ import StyledSidebar from './StyledSidebar';
 function SidebarComponent(props) {
   const genresData = props.genresData;
   const platformsData = props.platformsData;
+  const gamesData = props.gamesData;
   const [expandedIndexes, setExpandedIndexes] = useState([]);
   const [checked, setChecked] = useState([]);
+  const [games, setGames] = useState([]);
 
 
   function getFilters() {
@@ -35,7 +37,7 @@ function SidebarComponent(props) {
   }
 
   useEffect(() => {
-    console.log('Option checked', checked);
+    console.log('Filter checked', checked);
   }, [checked]); 
   const filters = getFilters();
   

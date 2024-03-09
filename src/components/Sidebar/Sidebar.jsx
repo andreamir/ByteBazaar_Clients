@@ -2,10 +2,11 @@ import useApi from "../../hooks/useApi"
 import { useEffect, useState } from 'react'
 import SidebarComponent from "./SidebarComponent";
 
-function Sidebar(){
+function Sidebar(props){
   const genresHook = useApi();
   const platformsHook = useApi();
   const { error, isLoading } = useApi()
+  const gameData  = props.gameData;
 
   const [genres, useGenres] = useState();
   const [platforms, usePlatforms] = useState();
@@ -48,7 +49,7 @@ function Sidebar(){
   
   return(
     <>
-      {genres && platforms && <SidebarComponent platformsData={platforms} genresData={genres}></SidebarComponent>}
+      {genres && platforms && <SidebarComponent platformsData={platforms} genresData={genres} gameData={gameData}></SidebarComponent>}
       {error && <p>{error.msg}</p>}
       {isLoading && <p>Loading</p>}
     </>
