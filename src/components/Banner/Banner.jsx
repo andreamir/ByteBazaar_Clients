@@ -1,18 +1,25 @@
 import { styled } from 'styled-components'
-import BorderImage from '../BorderImage/BorderImage.jsx'
+import StyledBorderImage from './Styled/BorderImage.js'
+import StyledImageContainer from './Styled/ImageContainer.js'
+import StyledImage from './Styled/Image.js'
 
 const BannerWrap = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
-  height: 170px;
+  height: ${ props => `${props.height};` || '170px;'}
   margin-bottom: 24px;
 `
 
-function Banner() {
+function Banner(props) {
+  const { height, image } = props
   return(
-    <BannerWrap>
-      <BorderImage/>
+    <BannerWrap height={height}>
+      <StyledBorderImage>
+        <StyledImageContainer>
+          <StyledImage image={image} />
+        </StyledImageContainer>
+      </StyledBorderImage>
     </BannerWrap>
   )
 }

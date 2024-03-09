@@ -7,11 +7,13 @@ function CarouselDemo() {
   return (
     <>
       <div className="containerDiv">
-        <Banner></Banner>
+        <Banner height='290px' ></Banner>
         {/* <Carousel data={data.products}/> */}
       </div>
     </>
   )
 }
+
+
 
 export default CarouselDemo
