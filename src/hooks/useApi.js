@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
-// const endpoint = 'https://bytebazaar.onrender.com'
-const endpoint = 'http://localhost:3003'
+const endpoint = 'https://bytebazaar.onrender.com'
+// const endpoint = 'http://localhost:3003'
 
 
 function useApi() {
