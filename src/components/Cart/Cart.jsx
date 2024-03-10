@@ -10,13 +10,10 @@ import './Cart.css'
 import useApi from '../../hooks/useApi.js';
 
 function Cart(props){
-    const { data, error, isLoading, getData } = useApi()
-    const { cartList } = useShoppingListContext() 
+    const { cartList, setCartList, setConfirmedOrder } = useShoppingListContext() 
     const [popoverOpen, setPopoverOpen] = useState(false);
     const [closeTimer, setCloseTimer] = useState(null);
-    const { buy } = useBuy();
-    const [responseOrder, setResponseOrder] = useState(false);
-    const [confirmedOrder, setConfirmedOrder] = useState(null);
+    const { buy, data, error, isLoading} = useBuy();
 
     const togglePopover = () => setPopoverOpen(!popoverOpen);
     const closePopover = () => {
@@ -38,13 +35,14 @@ function Cart(props){
     }, 0)
 
     async function buyButtonHandler(){
-      try {
-          const order = await buy();
-          setConfirmedOrder(order);
-          setResponseOrder(true);
-      } catch (error) {
-          setConfirmedOrder(null);
-      }
+			await buy();
+			if (data !== undefined) {
+				setCartList([]);
+				setConfirmedOrder('OK');
+			} else {
+				setConfirmedOrder(error && error.msg ? error.msg : 'Error');
+			}
+
   }
 
     return (
@@ -61,13 +59,12 @@ function Cart(props){
               <PopoverHeader className='cartHeader'> CART </PopoverHeader>
               <PopoverBody>
                   <CartList/>
-                  <button onClick={buyButtonHandler}>
-                    Buy
-                  </button>
+                  {cartList.length > 0 && 
+										<button type="button" class="btn btn-danger center"  onClick={buyButtonHandler}>
+                    	Buy
+                  	</button>}
               </PopoverBody>
           </Popover>}
-           { responseOrder &&  <ShowToast title='Purchase' message={ confirmedOrder ? 'Congrats! Your order has been confirmed' : 'Error purchasing'}/>}
-          
       </>
     )
 }

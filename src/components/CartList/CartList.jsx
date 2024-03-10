@@ -1,9 +1,16 @@
 import { useShoppingListContext } from '../../contexts/ShoppingListContext.jsx'
 import './CartList.css'
+import { useState, useEffect } from "react";
 
 
-function CartList(params) {
-  const { cartList, total, addGame, substractGame, deleteGame } = useShoppingListContext()
+function CartList() {
+  const { cartList, total, addGame, substractGame, deleteGame, confirmedOrder, setConfirmedOrder } = useShoppingListContext()
+  
+
+  function clearOrderMessage() {
+    setConfirmedOrder('')
+  }
+
   
   return(
     <>
@@ -42,7 +49,8 @@ function CartList(params) {
           </div>
         </li>)
       }
-        <li key ='total' className="list-group-item">
+        {cartList.length !== 0 &&
+          <li key ='total' className="list-group-item">
           <div className='total'>
             <div>
               <b>TOTAL </b>
@@ -50,6 +58,21 @@ function CartList(params) {
             <b>{total} € </b>
           </div>
         </li>
+        }
+        { confirmedOrder != '' &&
+          <li key ='orderResponse' className="list-group-item">
+            <div className='listContainer'>          
+              <b>{ confirmedOrder === 'Ok' ? 'Order succesfully completed' : confirmedOrder }</b>
+              <div>
+                      <div className='buttonSvg' onClick={() => clearOrderMessage()}>
+                        <svg className = 'remove' xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="m336-280 144-144 144 144 56-56-144-144 144-144-56-56-144 144-144-144-56 56 144 144-144 144 56 56ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
+                      </div>
+              </div>
+              
+            </div>
+          </li>
+        }
+             
       </ul>
     </>
   )
