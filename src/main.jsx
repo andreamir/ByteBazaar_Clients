@@ -13,6 +13,7 @@ const logoSource = ''
 const title = {name: 'BYTEbazaar', path: '/'}
 const tabElements = [
 	{title: 'Home', path: '/'} ,
+  {title: 'Catalog', path: '/gamecatalog'},
 	// {title: 'My account', path: ''}
 ]
 
