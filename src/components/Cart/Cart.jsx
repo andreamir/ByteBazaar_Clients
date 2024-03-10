@@ -60,7 +60,7 @@ function Cart(props){
               <PopoverBody>
                   <CartList/>
                   {cartList.length > 0 && 
-										<button type="button" class="btn btn-danger center"  onClick={buyButtonHandler}>
+										<button type="button" className="btn btn-danger center"  onClick={buyButtonHandler}>
                     	Buy
                   	</button>}
               </PopoverBody>
