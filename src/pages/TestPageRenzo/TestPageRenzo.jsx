@@ -5,6 +5,7 @@ import RegisterModal from '../../components/RegisterModal/RegisterModal';
 import RecoveryModal from '../../components/RecoveryModal/RecoveryModal';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
+import ProductList from '../../components/ProductList';
 
 function TestPageRenzo() {
   const [showLoginModal, toggleShowLoginModal] = useToggle(false);
@@ -44,10 +45,13 @@ function TestPageRenzo() {
           toggleRegisterModal={toggleRegisterModal}
         />
       )}
-      <h2>Long text for "scroll lock" testing</h2>
+      <h2>Scroll Lock</h2>
       <p>
-        While a modal is open, you shouldn't be able to scroll the page behind.
+        While a modal is open, you shouldn't be able to scroll the page.
       </p>
+      <div style={{ display: "flex", flexWrap: "wrap" }}>
+        <ProductList />
+      </div>
       <p className="text-muted">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur
         odio, tempore, dolores doloribus est optio reprehenderit quas debitis
