@@ -51,6 +51,7 @@ function LoginForm({
     console.log(data, error);
     setFormValues({ email: '', password: '' });
     navigate('/account');
+    handleDismiss();
   }
 
   return (
