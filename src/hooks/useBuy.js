@@ -4,8 +4,8 @@ import { useShoppingListContext } from "../contexts/ShoppingListContext";
 
 function useBuy() {
   const { data, error, isLoading, getData } = useApi()
-  const { cartList, setCartList } = useShoppingListContext() 
-  const productsToBuy = cartList.map((item) => ({
+  const { cartList, setCartList } = useShoppingListContext()
+  const  productsToBuy = cartList.map((item) => ({
     productId: item.id,
     quantity: item.qty,
   }));
@@ -14,7 +14,7 @@ function useBuy() {
     products: productsToBuy,
     paymentMethod: 'credit'
   }
-  console.log(order);
+
   async function buy() {
 
     const response = await getData({
@@ -22,22 +22,8 @@ function useBuy() {
       method:'POST', 
       body: order})
       
-
-      console.log('isLoading', isLoading);
-      console.log('error', error);
-      console.log('data', data);
-      console.log(response);
-    
-      if(error){
-        return false;
-      }
-      else{
-        setCartList([])
-        return true;
-      }
   }
-  return { buy }
-
+  return { buy, data, error, isLoading}
 }
 
-export default useBuy;
+export default useBuy

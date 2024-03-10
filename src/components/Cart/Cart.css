@@ -12,3 +12,8 @@
   text-align: center;
   background-color: #E30804;
 }
+
+.center{
+  margin: 0 auto; /* Establece márgenes izquierdo y derecho automáticos */
+  display: block; 
+}
