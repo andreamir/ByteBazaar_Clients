@@ -21,6 +21,12 @@ function ProductList() {
     )
   }
 
+  if (error) {
+    return (
+      <h1>Something went wrong...</h1>
+    )
+  }
+
   if (data) {
     if (checkedFilters.length === 0) {
       return (
