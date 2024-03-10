@@ -1,0 +1,22 @@
+.bannerWrap {
+  display: flex;
+  height: 60vh;
+  width: 100%;
+  gap: 40px;
+  margin: 16px 0px;
+}
+
+.mainBanner {
+  width: 60%;
+}
+
+.sideBanners {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  gap: 16px;
+}
+
+.sideBanners > * {
+  margin-bottom: 0;
+}
