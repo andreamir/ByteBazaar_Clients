@@ -5,6 +5,7 @@ import RecoveryModal from '../../components/RecoveryModal/RecoveryModal';
 import useToggle from '../../hooks/use-toggle.hook';
 import styles from './NavBar.module.css';
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 
 function Navbar(props) {
@@ -12,6 +13,7 @@ function Navbar(props) {
     const [showRegisterModal, toggleRegisterModal] = useToggle(false);
     const [showRecoveryModal, toggleRecoveryModal] = useToggle(false);
     const [isLogged, setIsLogged] = useState(false)
+    const navigate = useNavigate()
     const {elements, title, logo} = props;
 
     useEffect(() => {
@@ -35,7 +37,8 @@ function Navbar(props) {
 								{elements.map(tab => 
                 
 									<li key={tab.title} className="nav-item">
-										<a className="nav-link" aria-current="page" href={tab.path}>{`${tab.title}`}</a>
+										{/* <a className="nav-link" aria-current="page" href={tab.path}>{`${tab.title}`}</a> */}
+										<div className="nav-link" aria-current="page" onClick={() => navigate(tab.path)}>{`${tab.title}`}</div>
                     {/* {console.log(tab)} */}
 									</li>
 								)}         
