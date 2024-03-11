@@ -1,6 +1,7 @@
 import { styled } from 'styled-components'
 
 const InfoContainer = styled.div`
+  background-color: white;
   width: 100%;
   border: 1px solid #b3b3b3;
   border-radius: 16px;

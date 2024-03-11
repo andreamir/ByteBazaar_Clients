@@ -9,6 +9,8 @@ import TestPageMarc from './pages/TestPageMarc/TestPageMarc.jsx'
 import Account from './pages/Account/Account.jsx'
 import TestPageDrea from './pages/TestPageDrea/TestPageDrea.jsx'
 import SidebarDemo from './pages/SidebarDemo/SidebarDemo.jsx'
+import GameCatalog from './pages/GameCatalog';
+import GameTitleManagement from './pages/GameTitleManagement/GameTitleManagement.jsx'
 
 function AppRouter(){
   return useRoutes([
@@ -52,6 +54,14 @@ function AppRouter(){
       element: <SidebarDemo />,
       path: '/SidebarDemo'
     },
+    {
+      element: <GameCatalog />,
+      path: '/gamecatalog'
+    },
+    {
+      element: <GameTitleManagement />,
+      path: '/gameTitleManagement'
+    }
   ]);
 }
 

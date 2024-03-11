@@ -6,6 +6,7 @@ function ShoppingListProvider(props) {
   const { children } = props
   const [tabGames, setTabGames] = useState([])
   const [cartList, setCartList] = useState([])
+  const [confirmedOrder, setConfirmedOrder] = useState('');
   const [total, setTotal] = useState(0)
 
   function addGame(game) {
@@ -59,7 +60,7 @@ function ShoppingListProvider(props) {
   }, [cartList])
   
   return(
-    <ShoppingListContext.Provider value = {{tabGames, cartList, total, addGame, deleteGame, substractGame}}>
+    <ShoppingListContext.Provider value = {{tabGames, setCartList, cartList, confirmedOrder, setConfirmedOrder, total, addGame, deleteGame, substractGame}}>
       { children }
     </ShoppingListContext.Provider>
   )
