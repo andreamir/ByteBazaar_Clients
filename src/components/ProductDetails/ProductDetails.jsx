@@ -8,13 +8,13 @@ import xboxUrl from '../../assets/platforms/xbox.png'
 import { useShoppingListContext } from '../../contexts/ShoppingListContext'
 
 function ProductDetail(props) {
-  const { title, image, description, price, stock, platform, genres } = props
+  const { title, image, description, price, stock, platform, genres, product } = props
 
   //ADD TO CART BUTTON
   const { addGame } = useShoppingListContext();
   function addToCart(){
     console.log('props from addToCart: ', props);
-    addGame(props);
+    addGame(product);
   }
 
   let overlayUrl = ''
