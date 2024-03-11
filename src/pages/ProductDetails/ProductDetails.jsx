@@ -77,6 +77,7 @@ function ProductDetails() {
           price={price}
           platform={platform}
           genres={genres}
+          product={productHook?.data?.product}
         />
       )}
         <div className='toastContainer'>
