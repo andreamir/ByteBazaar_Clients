@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import './index.css'
 import Footer from './components/Footer/Footer.jsx'
 import { FiltersProvider } from './contexts/FiltersContext.jsx'
+import { AuthProvider } from './contexts/AuthContext.jsx'
 
 const logoSource = ''
 // const title = 'BYTEBAZAAR'
@@ -20,12 +21,14 @@ const tabElements = [
 ReactDOM.createRoot(document.getElementById('root')).render(
     <>
 			<BrowserRouter>
-				<ShoppingListProvider>
-					<Navbar key='navbar' title = {title} logo= {logoSource} elements = {tabElements}/>
-					<FiltersProvider>
-						<AppRouter/>
-					</FiltersProvider>
-				</ShoppingListProvider>
+        <AuthProvider>
+          <ShoppingListProvider>
+            <Navbar key='navbar' title = {title} logo= {logoSource} elements = {tabElements}/>
+            <FiltersProvider>
+              <AppRouter/>
+            </FiltersProvider>
+          </ShoppingListProvider>
+        </AuthProvider>
 			</BrowserRouter>
 			<Footer/>
     </>
