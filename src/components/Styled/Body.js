@@ -8,9 +8,12 @@ const Body = styled.div`
   letter-spacing: -.3px;
   line-height: 20px;
   width: 100vw;
+  max-width: 100%;
   // height: 100vh;
   display: flex;
   justify-content: center;
+  overflow-x: hidden;
+  margin: 0;
 `
 
 export default Body;

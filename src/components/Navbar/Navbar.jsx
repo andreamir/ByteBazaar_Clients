@@ -38,7 +38,7 @@ function Navbar(props) {
                 
 									<li key={tab.title} className="nav-item">
 										{/* <a className="nav-link" aria-current="page" href={tab.path}>{`${tab.title}`}</a> */}
-										<div className="nav-link" aria-current="page" onClick={() => navigate(tab.path)}>{`${tab.title}`}</div>
+										<div className="nav-link pointer" role="button" aria-current="page" onClick={() => navigate(tab.path)}>{`${tab.title}`}</div>
                     {/* {console.log(tab)} */}
 									</li>
 								)}         
