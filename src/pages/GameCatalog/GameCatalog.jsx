@@ -20,7 +20,7 @@ function GameCatalog() {
               </div>
               <div
                 className="col-md-9"
-                style={{ display: 'flex', flexWrap: 'wrap' }}
+                style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '20px' }}
               >
                 <ProductList />
               </div>
