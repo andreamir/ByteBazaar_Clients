@@ -13,7 +13,7 @@ function App() {
 
   useEffect(() => {
     const petition = {
-      route: '/products/all?limit=10'
+      route: '/products/all?limit=10&skip=10'
     }
     getData(petition)
   }, [])
