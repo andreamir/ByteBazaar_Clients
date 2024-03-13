@@ -11,6 +11,36 @@ const StyledCarousel = styled.div`
   width: 90vw;
   position: relative;
   border-radius: 24px;
+  *::-webkit-scrollbar {
+    height: 4px;
+    width: 4px;
+  }
+  *::-webkit-scrollbar-track {
+    border-radius: 0px;
+    background-color: #F9F9F9;
+    cursor: pointer;
+  }
+  
+  *::-webkit-scrollbar-track:hover {
+    background-color: #FFFFFF;
+  }
+  
+  *::-webkit-scrollbar-track:active {
+    background-color: #FFFFFF;
+  }
+  
+  *::-webkit-scrollbar-thumb {
+    border-radius: 0px;
+    background-color: #E20A03;
+  }
+  
+  *::-webkit-scrollbar-thumb:hover {
+    background-color: #B50802;
+  }
+  
+  *::-webkit-scrollbar-thumb:active {
+    background-color: #B50802;
+  }
 `
 
 function Carousel(props) {
@@ -18,6 +48,7 @@ function Carousel(props) {
   const [scrollWidth, setScrollWidth] = useState(0)
   const [maxScrollWidth, setMaxScrollWidth] = useState(0)
   const scrollbarRef = useRef()  
+  const gap = 20;
 
   function handleScroll() {
     setScrollWidth(Math.ceil(scrollbarRef.current.scrollLeft))
@@ -29,7 +60,6 @@ function Carousel(props) {
     setMaxScrollWidth(maxScroll)
   }, [data])
 
-  const gap = 20;
 
   function backClickHandler() {
     const productWidth = scrollbarRef.current.firstChild.clientWidth
