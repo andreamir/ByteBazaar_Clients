@@ -6,6 +6,7 @@ const Content = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 16px;
+  overflow: hidden;
 `
 
 export default Content

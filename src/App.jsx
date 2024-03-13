@@ -30,18 +30,18 @@ function App() {
       <StyledBody>
         <StyledContent>
           {/* <h1>Byte Bazaar 👾</h1> */}
-          <div className="bannerWrap">
-            <div className='mainBanner'>
+          <div className='bannerWrap'>
+            <div className='mainBanner col-12 col-lg-7'>
               <Banner height='100%' image={imageBank.ad}></Banner>
             </div>
-            <div className="sideBanners">
+            <div className="sideBanners col-12 col-lg-4">
               <Banner height='100%'></Banner>
               <Banner height='100%' image={imageBank.nintendoSwitch}></Banner>
             </div>
           </div>
-          <div className="carouselWrap">
+          {/* <div className="carouselWrap"> */}
             {products && <Carousel data={products}></Carousel>}
-          </div>
+          {/* </div> */}
         </StyledContent>
       </StyledBody>
     </>

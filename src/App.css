@@ -1,6 +1,8 @@
 .bannerWrap {
   display: flex;
-  height: 60vh;
+  padding-left: 40px;
+  /* justify-content: center; */
+  height: 58vh;
   width: 100%;
   gap: 40px;
   margin: 16px 0px;
@@ -8,6 +10,7 @@
 
 .mainBanner {
   width: 60%;
+  height: 100%;
 }
 
 .sideBanners {
